@@ -1,0 +1,53 @@
+{
+ "name": "livewellatrai",
+ "source": {
+  "origin": "https://www.livewellatrai.com"
+ },
+ "rebuild": {
+  "origin": "http://localhost:3021",
+  "preview": "https://{ref}--livewellatrai--adobedrago.aem.page",
+  "repo": "..",
+  "da": {
+   "org": "adobedrago",
+   "site": "livewellatrai"
+  }
+ },
+ "access": {
+  "mode": "live",
+  "profileDir": "work/.browser-profile"
+ },
+ "widths": [
+  1440,
+  1280
+ ],
+ "height": 900,
+ "blockRequests": [],
+ "hide": [
+  "#onetrust-consent-sdk"
+ ],
+ "invisible": [
+  "span#year",
+  ".footer-year"
+ ],
+ "freezeCss": [],
+ "hideIframes": true,
+ "consent": true,
+ "video": {
+  "providers": "all"
+ },
+ "carousels": [
+  "slick",
+  "swiper",
+  "hook"
+ ],
+ "scroll": {
+  "max": 20000,
+  "step": 500,
+  "wait": 150
+ },
+ "gate": {
+  "pixel": 0.99,
+  "tolerance": 0.5,
+  "threshold": 0.1
+ }
+}

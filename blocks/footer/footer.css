@@ -13,15 +13,12 @@ footer .footer {
    baseline) without depending on standards vs quirks mode line-height rules */
 footer .footer .footer-decoration {
   box-sizing: border-box;
-  display: flex;
-  align-items: flex-end;
-  min-height: 24px;
+  display: block;
   margin: 0 0 16px;
-  padding-bottom: 7px;
 }
 
 footer .footer .footer-decoration img {
-  display: block;
+  display: inline-block;
   width: 100%;
   height: auto;
 }
@@ -54,12 +51,16 @@ footer .footer .footer-brand {
 }
 
 /* bottom padding keeps the source's 82px-tall link hit area */
+
+/* the source link box is 83px tall (42px logo + 32px margin + line box) */
 footer .footer .footer-brand a {
-  padding-bottom: 40px;
+  height: 83px;
+  padding: 0;
 }
 
 footer .footer .footer-brand img {
-  display: block;
+  display: inline;
+  margin: 0 0 32px;
   width: 200px;
   max-width: 100%;
   height: auto;

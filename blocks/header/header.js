@@ -212,6 +212,8 @@ export default async function decorate(block) {
     let dropIndex = 0;
     [...list.children].forEach((li) => {
       li.classList.add('nav-item');
+      // DA wraps list item content in <p>: unwrap so the link is the item's direct child
+      li.querySelectorAll(':scope > p').forEach((p) => p.replaceWith(...p.childNodes));
       if (li.querySelector(':scope > ul, :scope > ol')) {
         buildDropdown(li, dropIndex, nav);
         dropIndex += 1;
@@ -235,9 +237,14 @@ export default async function decorate(block) {
       // an icon authored next to the CTA becomes its trailing arrow
       const icon = p.querySelector('img');
       if (icon && !a.contains(icon)) {
-        icon.className = 'nav-cta-icon';
-        icon.setAttribute('aria-hidden', 'true');
-        a.append(icon);
+        // drawn as a background (the source arrow is not an <img>)
+        const arrow = document.createElement('span');
+        arrow.className = 'nav-cta-icon';
+        arrow.setAttribute('aria-hidden', 'true');
+        arrow.style.backgroundImage = `url("${icon.currentSrc || icon.src}")`;
+        icon.closest('picture')?.remove();
+        icon.remove();
+        a.append(arrow);
       }
       a.addEventListener('click', () => {
         if (!isDesktop.matches) toggleMenu(nav, false);

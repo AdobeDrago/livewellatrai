@@ -102,6 +102,7 @@ main > .section > .hero-split-wrapper {
 }
 
 .hero-split .hero-split-content a.button:any-link {
+  display: block;
   text-align: inherit;
 }
 
@@ -118,19 +119,19 @@ main .hero-split.media-first a.button.accent:is(:hover, :focus-visible) {
 @media (width >= 900px) {
   .hero-split {
     flex-wrap: nowrap;
-    border-radius: min(320px, 22.23vw) / 50%;
+    border-radius: 320px / 50%;
     background-image: linear-gradient(90deg, var(--mid-blue) 0, var(--main-green) 800px);
   }
 
   .hero-split.media-first {
     padding-top: 0;
-    border-radius: min(256px, 17.78vw) / 50%;
+    border-radius: 256px / 50%;
     background-image: linear-gradient(270deg, var(--mid-blue) 0%, var(--main-green) 43.65%);
   }
 
   .hero-split .hero-split-media {
     flex: 0 0 auto;
-    width: min(608px, 42.25vw);
+    width: 608px;
   }
 
   .hero-split:not(.media-first) .hero-split-media {
@@ -138,27 +139,34 @@ main .hero-split.media-first a.button.accent:is(:hover, :focus-visible) {
   }
 
   .hero-split.media-first .hero-split-media {
-    width: min(496px, 34.45vw);
+    width: 496px;
   }
 
   .hero-split .hero-split-media img {
+    position: relative;
+    left: 1px;
     margin: 0;
-    box-shadow: max(-90px, -6.25vw) 0 0 min(10px, 0.7vw) var(--light-green);
+    box-shadow: -90px 0 0 10px var(--light-green);
   }
 
   .hero-split.media-first .hero-split-media img {
+    left: -1px;
     border-radius: 0 100% 100% 0;
-    box-shadow: min(100px, 6.95vw) 0 0 min(10px, 0.7vw) var(--mid-green), min(200px, 13.89vw) 0 0 min(10px, 0.7vw) var(--light-green);
+    box-shadow: 100px 0 0 10px var(--mid-green), 200px 0 0 10px var(--light-green);
   }
 
   .hero-split .hero-split-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
     flex: 1 1 0%;
-    padding: 48px min(128px, 8.9vw);
+    padding: 0 128px;
     text-align: start;
   }
 
   .hero-split.media-first .hero-split-content {
-    padding: 48px min(128px, 8.9vw) 48px min(256px, 17.8vw);
+    padding: 0 128px 0 256px;
   }
 
   .hero-split .hero-split-content :is(h1, h2, h3, h4, h5, h6):has(+ p) {
@@ -171,6 +179,13 @@ main .hero-split.media-first a.button.accent:is(:hover, :focus-visible) {
 
   .hero-split.media-first .hero-split-content :is(h1, h2, h3, h4, h5, h6):has(+ p) {
     margin-bottom: 24px;
+  }
+
+  /* source anchor offset on the first heading (offset-anchor) */
+  .hero-split.media-first .hero-split-content h2:first-child {
+    margin-top: -112px;
+    margin-bottom: 0;
+    padding-top: 112px;
   }
 
   .hero-split.media-first .hero-split-content p {

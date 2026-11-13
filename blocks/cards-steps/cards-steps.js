@@ -1,51 +1,76 @@
-import { createOptimizedPicture } from '../../scripts/aem.js';
-
 /**
- * Cards steps: ordered process steps, each with an icon, a title and short text.
- * One row per step; cells are [icon][title + text], or a single cell with all three.
+ * Cards steps: the LSA spotlight panel (source #lsa-spotlight .card-container).
+ * Rows: first = [logo][heading + lead]; middle = one step card each ([icon][title + text]);
+ * a last row holding only a link becomes the full-width notice button.
  * @param {Element} block
  */
+function unwrapPictures(el) {
+  el.querySelectorAll('picture').forEach((pic) => {
+    const img = pic.querySelector('img');
+    if (img) pic.replaceWith(img);
+  });
+}
+
+function textOf(cells) {
+  return cells.find((c) => c.textContent.trim());
+}
+
+function mediaOf(cells) {
+  return cells.find((c) => !c.textContent.trim() && c.querySelector('img, picture'));
+}
+
 export default function decorate(block) {
-  const ol = document.createElement('ol');
-  [...block.children].forEach((row) => {
+  const rows = [...block.children];
+  const parts = [];
+  const steps = document.createElement('div');
+  steps.className = 'cards-steps-list';
+
+  rows.forEach((row, i) => {
     const cells = [...row.children];
-    if (!cells.some((c) => c.textContent.trim() || c.querySelector('picture'))) return;
-
-    const li = document.createElement('li');
-    const icon = document.createElement('div');
-    icon.className = 'cards-steps-icon';
-    const body = document.createElement('div');
-    body.className = 'cards-steps-body';
-
-    cells.forEach((cell) => {
-      if (!cell.textContent.trim() && cell.querySelector('picture')) {
-        icon.append(...cell.querySelectorAll('picture'));
-      } else {
-        body.append(...cell.childNodes);
-      }
-    });
-
-    // icon authored inside the text cell: lift the first leading picture out
-    if (!icon.children.length) {
-      const pic = body.querySelector('picture');
-      if (pic) {
-        const parent = pic.parentElement;
-        icon.append(pic);
-        const isEmpty = !parent.textContent.trim() && !parent.children.length;
-        if (parent !== body && isEmpty) parent.remove();
-      }
+    unwrapPictures(row);
+    const media = mediaOf(cells);
+    const text = textOf(cells);
+    const links = row.querySelectorAll('a');
+    const linkOnly = links.length === 1 && text?.textContent.trim() === links[0].textContent.trim();
+    if (!media && linkOnly) {
+      const notice = document.createElement('div');
+      notice.className = 'cards-steps-notice';
+      const a = links[0];
+      a.className = '';
+      notice.append(a);
+      parts.push(['notice', notice]);
+      return;
     }
-
-    if (icon.children.length) li.append(icon);
-    if (body.childNodes.length) li.append(body);
-    ol.append(li);
+    if (i === 0) {
+      const head = document.createElement('div');
+      head.className = 'cards-steps-head';
+      if (media) {
+        const m = document.createElement('div');
+        m.className = 'cards-steps-logo';
+        m.append(...media.childNodes);
+        head.append(m);
+      }
+      if (text) {
+        const t = document.createElement('div');
+        t.className = 'cards-steps-title';
+        t.append(...text.childNodes);
+        head.append(t);
+      }
+      parts.push(['head', head]);
+      return;
+    }
+    const card = document.createElement('div');
+    card.className = 'cards-steps-card';
+    if (media) card.append(...media.querySelectorAll('img'));
+    if (text) card.append(...text.childNodes);
+    steps.append(card);
   });
 
-  ol.querySelectorAll('picture > img').forEach((img) => {
-    const url = new URL(img.src, window.location.href);
-    if (url.origin !== window.location.origin || /\.svg$/i.test(url.pathname)) return;
-    img.closest('picture').replaceWith(createOptimizedPicture(img.src, img.alt, false, [{ width: '200' }]));
-  });
-
-  block.replaceChildren(ol);
+  const out = [];
+  const head = parts.find(([k]) => k === 'head');
+  const notice = parts.find(([k]) => k === 'notice');
+  if (head) out.push(head[1]);
+  if (steps.children.length) out.push(steps);
+  if (notice) out.push(notice[1]);
+  block.replaceChildren(...out);
 }

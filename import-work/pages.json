@@ -1,0 +1,22 @@
+{
+ "repo": "..",
+ "sections": "pages",
+ "da": {
+  "org": "adobedrago",
+  "site": "livewellatrai",
+  "dir": "da"
+ },
+ "template": "home",
+ "pages": {
+  "home": {
+   "path": "index",
+   "source": "https://www.livewellatrai.com/",
+   "gate": "gate/home.json",
+   "bundle": "work/bundles/home"
+  }
+ },
+ "fragments": {
+  "_nav": "nav",
+  "_footer": "footer"
+ }
+}
