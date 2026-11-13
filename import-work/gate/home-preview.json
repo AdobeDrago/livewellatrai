@@ -1,0 +1,50 @@
+{
+ "site": "../site.json",
+ "page": "home",
+ "source": "https://www.livewellatrai.com/",
+ "rebuild": "https://livewellatrai-home-parity--livewellatrai--adobedrago.aem.page/",
+ "widths": [
+  1440,
+  1280
+ ],
+ "out": "work/gate/home-preview",
+ "bundle": "../work/bundles/home",
+ "timelines": [],
+ "sections": [
+  {
+   "name": "header",
+   "source": "header.header",
+   "rebuild": "body > header"
+  },
+  {
+   "name": "hero",
+   "source": "main > section.hero",
+   "rebuild": "main > .section:nth-child(1)"
+  },
+  {
+   "name": "enroll",
+   "source": "main > section.section",
+   "rebuild": "main > .section:nth-child(2)"
+  },
+  {
+   "name": "newhires",
+   "source": "main > section.new-hires",
+   "rebuild": "main > .section:nth-child(3)"
+  },
+  {
+   "name": "contacts",
+   "source": "main > section.contacts",
+   "rebuild": "main > .section:nth-child(4)"
+  },
+  {
+   "name": "raibenefits",
+   "source": "main > section.rai-benefits",
+   "rebuild": "main > .section:nth-child(5)"
+  },
+  {
+   "name": "footer",
+   "source": "footer.footer",
+   "rebuild": "footer .footer"
+  }
+ ]
+}

@@ -319,6 +319,11 @@ main > .section {
   margin: 40px 0;
 }
 
+/* DA serves the metadata-only last section as an empty div; it must not add margins */
+main > .section:empty {
+  display: none;
+}
+
 main > .section > div {
   max-width: var(--content-max-width);
   margin: auto;
@@ -564,10 +569,5 @@ main > .section.navy.contacts.cards-expanded > div {
 }
 
 main > .section.navy.contacts:not(.cards-expanded) > .cards-toggle ~ div {
-  display: none;
-}
-
-/* DA serves the metadata-only last section as an empty div; it must not add margins */
-main > .section:empty {
   display: none;
 }

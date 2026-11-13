@@ -1,5 +1,6 @@
 /* source: section.rai-benefits sits flush against the footer (no bottom margin) */
-main > .section.hero-cta-container:last-child {
+main > .section.hero-cta-container:last-child,
+main > .section.hero-cta-container:has(+ .section:empty:last-child) {
   margin-bottom: 0;
 }
 
