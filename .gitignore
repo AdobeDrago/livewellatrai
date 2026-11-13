@@ -19,3 +19,7 @@ migration-work/footer-validation/
 # generated importer output
 tools/importer/*.bundle.js
 tools/importer/reports/
+work/
+/index.html
+/nav.plain.html
+/footer.plain.html

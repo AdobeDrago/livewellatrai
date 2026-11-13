@@ -127,12 +127,12 @@ main > div {
  * leaves a 42px (84px) gap under the fixed header before the first section
  */
 main {
-  padding-top: 42px;
+  padding-top: calc(var(--nav-height) + 42px);
 }
 
 @media (width >= 1008px) {
   main {
-    padding-top: 84px;
+    padding-top: calc(var(--nav-height) + 84px);
   }
 }
 
@@ -319,6 +319,11 @@ main > .section {
   margin: 40px 0;
 }
 
+/* DA serves the metadata-only last section as an empty div; it must not add margins */
+main > .section:empty {
+  display: none;
+}
+
 main > .section > div {
   max-width: var(--content-max-width);
   margin: auto;
@@ -334,99 +339,43 @@ main > .section > .default-content-wrapper > :first-child {
 }
 
 /* section metadata: colored bands sit flush against their neighbours, as on the source */
-main > .section:is(.light-grey, .green, .navy) {
+main > .section:is(.enroll, .navy) {
   margin-top: 0;
   margin-bottom: 0;
 }
 
-main > .section:is(.light-grey, .green, .navy) + .section {
+main > .section:is(.enroll, .navy) + .section {
   margin-top: 0;
 }
 
-main > .section:has(+ .section:is(.light-grey, .green, .navy)) {
+main > .section:has(+ .section:is(.enroll, .navy)) {
   margin-bottom: 0;
 }
 
 /*
- * light-grey: "Enrolling in Benefits" (#oe). Desktop: #e5e5e5 band, 96px top/bottom,
- * white 1120px box (.oe-box) with 48px padding, 40px gap before a following green card.
- * <=78em the source drops the band: white section, 64px top, box padding 0 48px 48px.
+ * enroll: "Enrolling in Benefits" + LSA spotlight (source section.section): one #e5e5e5 band,
+ * 96px top/bottom, the white box and the green panel stacked and centred (1120px).
  */
-main > .section.light-grey {
-  padding: 64px 0 40px;
-  background-color: var(--white);
-}
-
-main > .section.light-grey > div {
-  box-sizing: border-box;
-  padding: 0 48px;
-}
-
-/* green card rows (kept here for specificity ordering; see green section below) */
-main > .section.green > div {
-  box-sizing: border-box;
-  padding: 0 32px;
-}
-
-main > .section.green > div + div {
-  margin-top: 32px;
-}
-
-main > .section.light-grey > div:last-child {
-  padding-bottom: 48px;
-}
-
-main > .section.light-grey > .default-content-wrapper + div {
-  margin-top: 48px;
-}
-
-main > .section.light-grey :is(h2, h3) {
-  color: var(--mid-blue);
-}
-
-main > .section.light-grey h4 {
-  color: var(--dark-blue);
-}
-
-@media (width < 576px) {
-  main > .section.light-grey > .default-content-wrapper {
-    text-align: center;
-  }
-}
-
-/*
- * green: LSA spotlight (#lsa-spotlight). Card: linear-gradient(296.13deg, #50af47 50%,
- * #afca0b 147.86%), 32px padding, 8px radius, 1120px wide; 32px between rows; white text.
- * Full-bleed and square <=980px; sits on the #e5e5e5 band (96px below) above 78em.
- */
-main > .section.green {
-  --button-color: var(--white);
-  --button-contrast: var(--dark-blue);
-
+main > .section.enroll {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  align-items: center;
   position: relative;
-  isolation: isolate;
-  padding: 32px 0;
-  color: var(--white);
+  margin: 0;
+  padding: 96px 0;
+  background-color: var(--light-grey);
+  overflow: hidden;
 }
 
-main > .section.green::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  background: linear-gradient(296.13deg, var(--main-green) 50%, var(--light-green) 147.86%);
-}
-
-main > .section.green :is(h1, h2) {
-  color: var(--white);
-}
-
-@media (width > 980px) {
-  main > .section.green::before {
-    left: max(0px, (100% - var(--content-max-width)) / 2);
-    right: max(0px, (100% - var(--content-max-width)) / 2);
-    border-radius: var(--radius-card);
-  }
+main > .section.enroll > div {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 0;
 }
 
 /*
@@ -552,42 +501,17 @@ main > .section.navy > .default-content-wrapper:first-child > :last-child {
   }
 }
 
-/* source page band (#e5e5e5) behind hero / enrolling / LSA / top of new hires, desktop only */
+/* source page band (#e5e5e5) behind the hero bottom and the top of new hires, desktop only */
 @media (width > 1248px) {
-  main > .section:has(+ .section.light-grey) {
+  main > .section:has(+ .section.enroll) {
     background-image: linear-gradient(var(--white) 50%, var(--light-grey) 50%);
   }
 
-  main > .section.light-grey {
-    padding: var(--section-padding) 0;
-    background:
-      linear-gradient(var(--white), var(--white)) center var(--section-padding) / min(var(--content-max-width), 100%) calc(100% - 2 * var(--section-padding)) no-repeat,
-      var(--light-grey);
-  }
-
-  main > .section.light-grey:has(+ .section.green) {
-    padding-bottom: 40px;
-    background-size: min(var(--content-max-width), 100%) calc(100% - var(--section-padding) - 40px);
-  }
-
-  main > .section.light-grey > div:first-child {
-    padding-top: 48px;
-  }
-
-  main > .section.green {
-    padding-bottom: calc(var(--section-padding) + 32px);
-    background-color: var(--light-grey);
-  }
-
-  main > .section.green::before {
-    bottom: var(--section-padding);
-  }
-
-  main > .section.green + .section {
+  main > .section.enroll + .section {
     background-image: linear-gradient(var(--light-grey) 52%, transparent 52%);
   }
 
-  main > .section.green + .section:has(+ .section.navy) {
+  main > .section.enroll + .section:has(+ .section.navy) {
     background-image:
       linear-gradient(var(--light-grey) 52%, transparent 52%),
       linear-gradient(transparent calc(100% - 240px), var(--dark-blue) calc(100% - 240px));
@@ -596,4 +520,54 @@ main > .section.navy > .default-content-wrapper:first-child > :last-child {
   main > .section.navy {
     padding-bottom: var(--section-padding-dark);
   }
+}
+
+/*
+ * contacts (source section.contacts): centred column, 160px 16px padding; the vendor list and
+ * the callout stay hidden until "See all contacts" is pressed. Wrappers are display: contents so
+ * the heading, text and button are the flex items, as on the source.
+ */
+main > .section.navy.contacts {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  padding: 160px 16px;
+}
+
+main > .section.navy.contacts > .default-content-wrapper:first-child {
+  display: contents;
+}
+
+main > .section.navy.contacts h2 {
+  margin: -112px 0 0;
+  padding: 112px 0 0;
+  font-size: 48px;
+  line-height: 72px;
+}
+
+main > .section.navy.contacts > .default-content-wrapper:first-child > p {
+  max-width: 778.613px;
+  margin: 16px 0 64px;
+}
+
+main > .section.navy.contacts > .cards-toggle {
+  min-width: 0;
+  margin: 0;
+  border-color: var(--white);
+  padding: 8px 32px;
+  background: none;
+  color: var(--white);
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 30px;
+}
+
+main > .section.navy.contacts.cards-expanded > div {
+  width: 100%;
+}
+
+main > .section.navy.contacts:not(.cards-expanded) > .cards-toggle ~ div {
+  display: none;
 }

@@ -1,169 +1,100 @@
-/*
- * columns-promo: two looks, picked by the section style.
- *   .section.light-grey  Open Enrollment steps (#oe ol.oe-box__steps): two text columns,
- *                        1px divider, underlined arrow links (global a.link-arrow).
- *   .section.green       LSA spotlight (#lsa-spotlight .image-title-wrapper): white circular
- *                        logo badge beside a white heading and lead text.
- * The two looks never share a section, so their selectors don't compete on specificity.
- */
-
-/* stylelint-disable no-descending-specificity */
-.columns-promo .columns-promo-row {
+/* columns-promo: Open Enrollment box (source #oe .oe-box); values from the source's computed styles */
+.columns-promo {
   display: flex;
-  flex-direction: column;
-}
-
-.columns-promo .columns-promo-content > :first-child {
-  margin-top: 0;
-}
-
-.columns-promo .columns-promo-content > :last-child {
-  margin-bottom: 0;
-}
-
-/* light-grey look: steps (source ol: margin 48px 0 16px, mobile column centered) */
-.section.light-grey .columns-promo {
-  margin-bottom: 16px;
-  color: var(--text-color);
-  text-align: center;
-}
-
-.section.light-grey .columns-promo .columns-promo-row + .columns-promo-row {
-  margin-top: 32px;
-}
-
-.section.light-grey .columns-promo .columns-promo-content {
-  display: flex;
-  flex-direction: column;
-}
-
-.section.light-grey .columns-promo .columns-promo-content + .columns-promo-content {
-  margin-top: 32px;
-  border-top: 1px solid var(--dark-grey);
-  padding-top: 32px;
-}
-
-.section.light-grey .columns-promo h4 {
-  margin: 0;
-  color: var(--dark-blue);
-  font-size: var(--heading-font-size-m);
-  font-weight: 700;
-  line-height: 30px;
-}
-
-.section.light-grey .columns-promo p {
-  margin: 16px 0;
-  color: var(--text-color);
-  font-size: var(--body-font-size-m);
-  line-height: 30px;
-}
-
-.section.light-grey .columns-promo p.columns-promo-cta {
-  margin: 0;
-  line-height: 0;
-}
-
-.section.light-grey .columns-promo a.link-arrow:any-link {
-  margin: 0;
-  color: var(--dark-blue);
-  font-size: var(--body-font-size-s);
-  font-weight: 700;
-  line-height: 26.4px;
-  text-decoration: none;
-  vertical-align: top;
-}
-
-/* green look: logo badge + heading (white text from the section) */
-.section.green .columns-promo .columns-promo-row {
-  align-items: center;
-  gap: 32px;
-}
-
-.section.green .columns-promo .columns-promo-row + .columns-promo-row {
-  margin-top: 32px;
-}
-
-/*
- * the LSA logo SVG draws the white badge (200px circle + shadow) inside a 240px canvas.
- * Source img is inline in a 16px/24px line box, so the cell is 247px (7px baseline gap);
- * reproduced explicitly so it holds in quirks and standards mode alike.
- */
-.section.green .columns-promo .columns-promo-media {
-  flex: 0 0 auto;
-  width: 240px;
-  padding-bottom: 7px;
-  line-height: 0;
-}
-
-.section.green .columns-promo .columns-promo-media img {
-  display: block;
+  flex-wrap: wrap;
+  box-sizing: border-box;
   width: 100%;
-  height: auto;
+  max-width: 1120px;
+  margin: 0 0 40px;
+  background-color: var(--white);
+  color: var(--text-color);
 }
 
-.section.green .columns-promo .columns-promo-content {
-  flex: 0 1 auto;
-  text-align: center;
+.columns-promo .columns-promo-body {
+  flex: 2 1 0%;
+  padding: 48px;
 }
 
-/* source p.lead keeps margin 16px 0 inside the flex item (title cell = h2 + 16 + p + 16) */
-.section.green .columns-promo .columns-promo-content p {
+.columns-promo h2 {
+  margin: 0;
+  color: var(--mid-blue);
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 72px;
+}
+
+.columns-promo p {
   margin: 16px 0;
-  color: var(--white);
+  font-size: 20px;
+  line-height: 30px;
 }
 
-@media (width >= 900px) {
-  /* light-grey: two columns, space-between, divider centred, links aligned at the bottom */
-  .section.light-grey .columns-promo {
-    text-align: start;
+.columns-promo .columns-promo-steps {
+  display: flex;
+  justify-content: space-between;
+  margin: 48px 0 16px;
+  padding: 0;
+  list-style: none;
+}
+
+.columns-promo .columns-promo-steps > li {
+  display: flex;
+  flex: 1 1 0%;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: start;
+  margin: 0;
+  padding: 0;
+}
+
+.columns-promo .columns-promo-steps > li:first-child {
+  border-right: 1px solid var(--dark-grey);
+  padding-right: 32px;
+}
+
+.columns-promo .columns-promo-steps > li:last-child {
+  padding-left: 32px;
+}
+
+.columns-promo .columns-promo-title {
+  display: flex;
+  gap: 20px;
+}
+
+.columns-promo h4 {
+  margin: 0;
+  color: var(--dark-blue);
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 30px;
+}
+
+/* the link sits at the bottom of its item in both columns, as in the source */
+.columns-promo a.link-arrow:any-link {
+  display: block;
+  align-self: end;
+  color: var(--dark-blue);
+  font-size: 17.6px;
+  line-height: 26.4px;
+}
+
+@media (width < 900px) {
+  .columns-promo .columns-promo-body {
+    padding: 32px 16px;
   }
 
-  .section.light-grey .columns-promo .columns-promo-row {
-    position: relative;
-    flex-direction: row;
-    justify-content: space-between;
-  }
-
-  .section.light-grey .columns-promo .columns-promo-content {
-    width: calc(50% - 32px);
-  }
-
-  .section.light-grey .columns-promo .columns-promo-content + .columns-promo-content {
-    margin-top: 0;
-    border-top: 0;
-    padding-top: 0;
-  }
-
-  .section.light-grey .columns-promo h4 {
-    width: fit-content;
-  }
-
-  .section.light-grey .columns-promo .columns-promo-content + .columns-promo-content::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 50%;
-    width: 1px;
-    background-color: var(--dark-grey);
-  }
-
-  .section.light-grey .columns-promo p.columns-promo-cta {
-    margin-top: auto;
-  }
-
-  .section.light-grey .columns-promo a.link-arrow:any-link {
-    margin-top: 8px;
-  }
-
-  /* green: badge left, text right, centred in the card */
-  .section.green .columns-promo .columns-promo-row {
-    flex-direction: row;
-    justify-content: center;
+  .columns-promo .columns-promo-steps {
+    flex-direction: column;
     gap: 32px;
   }
 
-  .section.green .columns-promo .columns-promo-content {
-    text-align: start;
+  .columns-promo .columns-promo-steps > li:first-child {
+    border-right: 0;
+    padding-right: 0;
+  }
+
+  .columns-promo .columns-promo-steps > li:last-child {
+    border-top: 1px solid var(--dark-grey);
+    padding: 32px 0 0;
   }
 }

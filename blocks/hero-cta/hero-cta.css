@@ -1,5 +1,6 @@
 /* source: section.rai-benefits sits flush against the footer (no bottom margin) */
-main > .section.hero-cta-container:last-child {
+main > .section.hero-cta-container:last-child,
+main > .section.hero-cta-container:has(+ .section:empty:last-child) {
   margin-bottom: 0;
 }
 
@@ -25,6 +26,9 @@ main > .section.hero-cta-container:last-child {
   position: absolute;
   inset: 0;
   z-index: -1;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: cover;
 }
 
 .hero-cta .hero-cta-background::after {
@@ -56,9 +60,9 @@ main > .section.hero-cta-container:last-child {
   line-height: 1.5;
 }
 
-/* source p: 24px/36px, margin 32px, measured 763px wide on desktop */
+/* source p: 24px/36px, margin 32px, measured 667.383px wide on desktop */
 .hero-cta .hero-cta-content p {
-  max-width: 763px;
+  max-width: 667.383px;
   margin: 32px auto;
   color: var(--white);
   font-size: 24px;

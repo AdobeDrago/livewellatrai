@@ -1,5 +1,3 @@
-import { createOptimizedPicture } from '../../scripts/aem.js';
-
 /**
  * Hero CTA: full-width background photo with centered heading, text and a CTA button.
  * Authored as a background image (row or cell) plus a content cell.
@@ -47,14 +45,20 @@ export default function decorate(block) {
     }
   });
 
-  bg.querySelectorAll('picture > img').forEach((img) => {
-    const url = new URL(img.src, window.location.href);
-    if (url.origin !== window.location.origin || /\.svg$/i.test(url.pathname)) return;
-    img.closest('picture').replaceWith(createOptimizedPicture(img.src, img.alt, true, [{ media: '(min-width: 900px)', width: '2000' }, { width: '750' }]));
-  });
+  // the source paints the photo as a CSS background (no <img>), cover, centred
+  const bgImg = bg.querySelector('img');
+  if (bgImg) {
+    const url = new URL(bgImg.getAttribute('src'), window.location.href);
+    if (url.origin === window.location.origin && !/\.svg$/i.test(url.pathname)) {
+      url.search = '?width=2000&format=pjpg&optimize=medium';
+    }
+    bg.style.backgroundImage = `url("${url.href}")`;
+    bg.replaceChildren();
+    bg.dataset.image = 'true';
+  }
 
   const children = [];
-  if (bg.children.length) children.push(bg);
+  if (bg.dataset.image) children.push(bg);
   else block.classList.add('no-image');
   children.push(content);
   block.replaceChildren(...children);

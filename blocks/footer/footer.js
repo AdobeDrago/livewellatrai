@@ -97,4 +97,15 @@ export default async function decorate(block) {
     block.append(isMediaOnly(section) ? buildDecoration(section) : buildContentSection(section));
   });
   block.querySelectorAll('a[href]').forEach(decorateLinkTarget);
+  // the copyright year is a separate element, as in the source (dynamic there)
+  block.querySelectorAll('.footer-text').forEach((p) => {
+    const node = [...p.childNodes].find((n) => n.nodeType === 3 && /©\s*\d{4}/.test(n.textContent));
+    if (!node) return;
+    const m = node.textContent.match(/^(.*©\s*)(\d{4})(.*)$/s);
+    const year = document.createElement('span');
+    year.className = 'footer-year';
+    const [, before, digits, after] = m;
+    year.textContent = digits;
+    node.replaceWith(before, year, after);
+  });
 }

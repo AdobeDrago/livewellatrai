@@ -29,8 +29,8 @@
   --dark-color: var(--dark-blue);
 
   /* fonts */
-  --body-font-family: aeroport, sans-serif;
-  --heading-font-family: aeroport, sans-serif;
+  --body-font-family: Aeroport, sans-serif; /* stylelint-disable-line value-keyword-case */
+  --heading-font-family: Aeroport, sans-serif; /* stylelint-disable-line value-keyword-case */
 
   /* body sizes */
   --body-font-size-m: 20px;
