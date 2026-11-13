@@ -1,0 +1,32 @@
+{
+  "variantName": "hero-split",
+  "baseBlock": "hero",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "moderate",
+    "hasGrid": true,
+    "imagePattern": "noimg",
+    "structure": "heading + text + link + image",
+    "purpose": "top-of-page gradient pill with heading, text and CTA beside a circular photo"
+  },
+  "contentPattern": {
+    "structure": "One row, two cells: [heading + paragraph + CTA link] | [image]. Image cell may come first",
+    "rows": "1",
+    "cells": [
+      "text: heading, body paragraph, one CTA link (rendered as button)",
+      "image: photo (cropped to a circle)"
+    ]
+  },
+  "options": [],
+  "memberVariantIds": [
+    "v_759f918ca6a8"
+  ],
+  "usage": {
+    "sourceUrl": "https://www.livewellatrai.com/",
+    "pages": [
+      "https://www.livewellatrai.com/"
+    ]
+  },
+  "reuseGuidance": "Use for a page-opening split hero with copy on one side and a photo on the other. For a full-bleed background photo with centered copy use hero-cta."
+}

@@ -1,0 +1,38 @@
+{
+  "id": "v_a74548023fe1",
+  "type": "custom",
+  "canonicalModel": "standalone",
+  "version": "1.0.0",
+  "created": "2026-11-13T01:56:40.029Z",
+  "sourceContext": {
+    "originUrl": "https://www.livewellatrai.com/",
+    "discoveredDuring": "site-scope-analysis"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "minimal",
+    "hasGrid": false,
+    "imagePattern": "noimg",
+    "structure": "link"
+  },
+  "layoutKey": "~(T)",
+  "colour": "~w(Tw)",
+  "usage": {
+    "pagesUsing": [
+      {
+        "url": "https://www.livewellatrai.com/",
+        "instanceId": "7c9f568d16b3",
+        "instanceIds": [
+          "7c9f568d16b3"
+        ],
+        "screenshot": ".pages/www_livewellatrai_com--6b38b2b3/blocks/7c9f568d16b3.jpg"
+      }
+    ],
+    "reuseCount": 1
+  },
+  "naming": {
+    "confidence": "low",
+    "reason": "slim rounded gradient strip with one line of linked text; could also be default-content in a styled section",
+    "mergedInto": null
+  }
+}

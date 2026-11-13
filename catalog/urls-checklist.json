@@ -1,0 +1,21 @@
+{
+  "analysis-urls-checklist": {
+    "captured": "2026-11-13T01:56:13.285Z",
+    "totalPages": 1,
+    "statusBreakdown": {
+      "marked": 0,
+      "analyzed": 1,
+      "failed": 0
+    },
+    "pages": {
+      "https://www.livewellatrai.com/": {
+        "url": "https://www.livewellatrai.com/",
+        "status": "analyzed",
+        "analyzedAt": "2026-11-13T01:56:26.360Z",
+        "slug": "www_livewellatrai_com--6b38b2b3",
+        "title": "Reynolds | LiveWell",
+        "componentBlockCount": 8
+      }
+    }
+  }
+}

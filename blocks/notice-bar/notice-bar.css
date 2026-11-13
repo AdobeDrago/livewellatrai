@@ -1,0 +1,37 @@
+/* source: #lsa-spotlight > .full-width-button (translucent strip at the bottom of the green card) */
+.notice-bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  border-radius: 8px;
+  background-color: rgb(255 255 255 / 15%);
+  color: rgb(28 49 68);
+  font-size: var(--body-font-size-xs);
+  font-weight: 400;
+  line-height: 24px;
+  text-align: start;
+}
+
+.notice-bar .notice-bar-content {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.notice-bar .notice-bar-content > * {
+  margin: 0;
+}
+
+.notice-bar .notice-bar-content a,
+.notice-bar .notice-bar-content a:any-link {
+  display: block;
+  padding: 16px;
+  color: var(--white);
+  font-size: var(--body-font-size-xs);
+  font-weight: 400;
+  line-height: 24px;
+  text-align: center;
+  text-decoration: none;
+}
+
+/* source: no visual change on hover; keyboard focus keeps the UA focus ring only */

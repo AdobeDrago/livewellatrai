@@ -1,0 +1,73 @@
+/*
+ * Brand tokens extracted from https://www.livewellatrai.com/
+ * (computed styles + theme :root variables, see migration-work/brand.json).
+ * The source stack names "Aeroport", but the source ships no Aeroport webfont,
+ * so it renders with the generic sans-serif fallback; the stack is kept as-is.
+ */
+
+:root {
+  /* brand palette (source theme variables) */
+  --dark-blue: #0e2b63;
+  --mid-blue: #004f9f;
+  --light-blue: #00b1eb;
+  --light-grey: #e5e5e5;
+  --dark-grey: #7e7d7d;
+  --dark-purple: #5a328a;
+  --dark-orange: #ef7d00;
+  --light-orange: #fb0;
+  --main-green: #50af47;
+  --mid-green: #80bc29;
+  --light-green: #afca0b;
+  --white: #fff;
+
+  /* semantic colors */
+  --background-color: #fcfffc;
+  --text-color: #1c3144;
+  --link-color: var(--dark-blue);
+  --link-hover-color: var(--mid-blue);
+  --light-color: var(--light-grey);
+  --dark-color: var(--dark-blue);
+
+  /* fonts */
+  --body-font-family: aeroport, sans-serif;
+  --heading-font-family: aeroport, sans-serif;
+
+  /* body sizes */
+  --body-font-size-m: 20px;
+  --body-font-size-s: 17.6px;
+  --body-font-size-xs: 16px;
+  --body-line-height: 1.5;
+
+  /* heading sizes (mobile, source max-width: 36em) */
+  --heading-font-size-xxl: 40px;
+  --heading-font-size-xl: 32px;
+  --heading-font-size-l: 20px;
+  --heading-font-size-m: 20px;
+  --heading-font-size-s: 18px;
+  --heading-font-size-xs: 16px;
+  --heading-line-height-xxl: 56px;
+  --heading-line-height: 1.5;
+  --heading-font-weight: 700;
+
+  /* spacing */
+  --content-max-width: 1120px;
+  --section-padding: 96px;
+  --section-padding-dark: 128px;
+  --radius-card: 8px;
+  --radius-pill: 999px;
+}
+
+@media (width >= 576px) {
+  :root {
+    --heading-font-size-xxl: 48px;
+    --heading-font-size-xl: 48px;
+    --heading-font-size-l: 24px;
+    --heading-line-height-xxl: 64px;
+  }
+}
+
+@media (width > 1248px) {
+  :root {
+    --section-padding-dark: 160px;
+  }
+}

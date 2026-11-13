@@ -1,0 +1,38 @@
+{
+  "id": "v_26e9369a55aa",
+  "type": "cards",
+  "canonicalModel": "standalone",
+  "version": "1.0.0",
+  "created": "2026-11-13T01:56:40.029Z",
+  "sourceContext": {
+    "originUrl": "https://www.livewellatrai.com/",
+    "discoveredDuring": "site-scope-analysis"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "moderate",
+    "hasGrid": true,
+    "imagePattern": "noimg",
+    "structure": "image + heading + text"
+  },
+  "layoutKey": "[~(T)|~(T)*1.25]",
+  "colour": "[~w(Tk)|~w(Tk)*1.25]",
+  "usage": {
+    "pagesUsing": [
+      {
+        "url": "https://www.livewellatrai.com/",
+        "instanceId": "51e746e72f2e",
+        "instanceIds": [
+          "51e746e72f2e"
+        ],
+        "screenshot": ".pages/www_livewellatrai_com--6b38b2b3/blocks/51e746e72f2e.jpg"
+      }
+    ],
+    "reuseCount": 1
+  },
+  "naming": {
+    "confidence": "high",
+    "reason": "look-alike white cards each with icon, title and short text describing process steps",
+    "mergedInto": null
+  }
+}

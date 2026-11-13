@@ -1,0 +1,32 @@
+{
+  "variantName": "hero-cta",
+  "baseBlock": "hero",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "moderate",
+    "hasGrid": false,
+    "imagePattern": "noimg",
+    "structure": "heading + text + link + button",
+    "purpose": "full-width background photo with overlaid centered heading, text and a CTA button"
+  },
+  "contentPattern": {
+    "structure": "Row 1: background image. Row 2: heading + paragraph + CTA link. (Image and text may also be two cells in one row.)",
+    "rows": "2",
+    "cells": [
+      "image: background photo (darkened overlay)",
+      "text: heading, paragraph, CTA link (rendered as button)"
+    ]
+  },
+  "options": [],
+  "memberVariantIds": [
+    "v_60ff88b9f807"
+  ],
+  "usage": {
+    "sourceUrl": "https://www.livewellatrai.com/",
+    "pages": [
+      "https://www.livewellatrai.com/"
+    ]
+  },
+  "reuseGuidance": "Use for a full-width promotional band linking out to another site or tool. For copy beside an image use hero-split."
+}

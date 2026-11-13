@@ -1,0 +1,32 @@
+{
+  "variantName": "columns-promo",
+  "baseBlock": "columns",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "moderate",
+    "hasGrid": true,
+    "imagePattern": "noimg",
+    "structure": "image + heading + text",
+    "purpose": "two-part promo banner: circular logo badge on the left, heading and paragraph on the right"
+  },
+  "contentPattern": {
+    "structure": "One row, two cells: [logo image] | [heading + paragraph]",
+    "rows": "1",
+    "cells": [
+      "image: logo (shown in a circular badge)",
+      "text: heading and short paragraph"
+    ]
+  },
+  "options": [],
+  "memberVariantIds": [
+    "v_3ed25bcad2e4"
+  ],
+  "usage": {
+    "sourceUrl": "https://www.livewellatrai.com/",
+    "pages": [
+      "https://www.livewellatrai.com/"
+    ]
+  },
+  "reuseGuidance": "Use for a short call-out pairing a brand/program logo with a headline. For general multi-column layouts use columns."
+}

@@ -1,0 +1,32 @@
+{
+  "variantName": "cards-steps",
+  "baseBlock": "cards",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "moderate",
+    "hasGrid": true,
+    "imagePattern": "noimg",
+    "structure": "image + heading + text",
+    "purpose": "row of white cards, each an ordered process step with icon, title and short text"
+  },
+  "contentPattern": {
+    "structure": "One row per step: [icon image] | [heading + paragraph]. A single cell holding icon, heading and text also works",
+    "rows": "1 per step",
+    "cells": [
+      "icon: small image or SVG icon",
+      "text: step heading and short description"
+    ]
+  },
+  "options": [],
+  "memberVariantIds": [
+    "v_26e9369a55aa"
+  ],
+  "usage": {
+    "sourceUrl": "https://www.livewellatrai.com/",
+    "pages": [
+      "https://www.livewellatrai.com/"
+    ]
+  },
+  "reuseGuidance": "Use for numbered/sequential how-it-works steps. Renders as an ordered list. For generic content cards use cards."
+}

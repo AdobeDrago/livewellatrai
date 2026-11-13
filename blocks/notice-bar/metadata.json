@@ -1,0 +1,31 @@
+{
+  "variantName": "notice-bar",
+  "baseBlock": "custom",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "minimal",
+    "hasGrid": false,
+    "imagePattern": "noimg",
+    "structure": "link",
+    "purpose": "slim rounded strip with one line of text containing an inline link"
+  },
+  "contentPattern": {
+    "structure": "One row, one cell: a single paragraph with an inline link",
+    "rows": "1",
+    "cells": [
+      "text: one short sentence with an inline (bold) link"
+    ]
+  },
+  "options": [],
+  "memberVariantIds": [
+    "v_a74548023fe1"
+  ],
+  "usage": {
+    "sourceUrl": "https://www.livewellatrai.com/",
+    "pages": [
+      "https://www.livewellatrai.com/"
+    ]
+  },
+  "reuseGuidance": "Use for a single-line announcement or pointer link between sections. Links stay inline, not buttons. Low-confidence classification: could also be default content in a styled section."
+}

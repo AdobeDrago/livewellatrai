@@ -1,1 +1,6 @@
-/* source stack names Aeroport but the browser loaded no Aeroport face: system fallback only */
+/*
+ * No webfont to load: the source stack is "Aeroport, sans-serif" but the source site ships
+ * no Aeroport @font-face/Typekit/Google Fonts (and neither Typekit kit cwm0xxe nor
+ * Google Fonts offer it), so it renders with the generic sans-serif fallback.
+ * brand.css keeps the identical stack, so rendering matches the source.
+ */

@@ -1,0 +1,570 @@
+{
+  "schemaVersion": 2,
+  "url": "https://www.livewellatrai.com/",
+  "title": "Reynolds | LiveWell",
+  "timestamp": "2026-11-13T01:56:26.269Z",
+  "duration": "11.5s",
+  "cleanup": {
+    "elementsRemoved": 0,
+    "types": [],
+    "cookieConsentDismissed": false,
+    "lateConsentOverlaysRemoved": 0,
+    "removed": []
+  },
+  "snapshot": {
+    "html": "page.html",
+    "unresolvedSelectors": []
+  },
+  "images": [
+    {
+      "url": "https://www.livewellatrai.com/wp-content/uploads/logo.svg",
+      "type": "img"
+    },
+    {
+      "url": "https://www.livewellatrai.com/wp-content/uploads/REY-2027-OE-Guide-Cover-37a370a6-f702-40db-95a6-c9505eaf5ccd.jpg",
+      "type": "img"
+    },
+    {
+      "url": "https://www.livewellatrai.com/wp-content/uploads/Nav-2026-Guide-Cover.jpg",
+      "type": "img"
+    },
+    {
+      "url": "https://www.livewellatrai.com/wp-content/uploads/REYNOLDS-2027-Vol-Insurance-final-1.jpg",
+      "type": "img"
+    },
+    {
+      "url": "https://www.livewellatrai.com/wp-content/uploads/stretching.jpg",
+      "type": "img"
+    },
+    {
+      "url": "https://www.livewellatrai.com/wp-content/uploads/logo-lsa-1.svg",
+      "type": "img"
+    },
+    {
+      "url": "https://www.livewellatrai.com/wp-content/uploads/ico-purchase.svg",
+      "type": "img"
+    },
+    {
+      "url": "https://www.livewellatrai.com/wp-content/uploads/ico-receipt-1.svg",
+      "type": "img"
+    },
+    {
+      "url": "https://www.livewellatrai.com/wp-content/uploads/ico-reimburse-1.svg",
+      "type": "img"
+    },
+    {
+      "url": "https://www.livewellatrai.com/wp-content/uploads/women-stretching.jpg",
+      "type": "img"
+    },
+    {
+      "url": "https://www.livewellatrai.com/wp-content/uploads/lightbulb.svg",
+      "type": "img"
+    },
+    {
+      "url": "https://www.livewellatrai.com/wp-content/uploads/color-bar.svg",
+      "type": "img"
+    },
+    {
+      "url": "https://www.livewellatrai.com/wp-content/uploads/reynolds-logo.png",
+      "type": "img"
+    },
+    {
+      "url": "https://www.livewellatrai.com/wp-content/uploads/background-lozenge.png",
+      "type": "background"
+    },
+    {
+      "url": "https://www.livewellatrai.com/wp-content/uploads/man-smiling-desk-computer.jpg",
+      "type": "background"
+    }
+  ],
+  "skeleton": {
+    "signature": "sB(s,s,s(2x1B,sB(sB(s,s,2x1),sB(2x1,3x1,sB)),2x1B,s(sB,s),sB))",
+    "nodeMap": {
+      "r": "body",
+      "rc1": "#header",
+      "rc2": "#page > hr",
+      "rc3": "#main",
+      "rc3c1": "#main > section.hero",
+      "rc3c2": "#oe",
+      "rc3c2c1": "#oe > div.oe-box",
+      "rc3c2c1c1": "#oe > div.oe-box > div.oe-box__main > h2",
+      "rc3c2c1c2": "#oe > div.oe-box > div.oe-box__main > p",
+      "rc3c2c1c3": "#oe > div.oe-box > div.oe-box__main > ol.oe-box__steps",
+      "rc3c2c2": "#lsa-spotlight",
+      "rc3c2c2c1": "#lsa-spotlight > div.image-title-wrapper",
+      "rc3c2c2c2": "#lsa-spotlight > div.card-wrapper",
+      "rc3c2c2c3": "#lsa-spotlight > div.full-width-button",
+      "rc3c3": "#main > section.new-hires",
+      "rc3c4": "#main > section.contacts",
+      "rc3c4c1": "#main > section.contacts > span.contacts__background",
+      "rc3c4c2": "#main > section.contacts > p.contacts__intro-text",
+      "rc3c5": "#main > section.rai-benefits"
+    },
+    "sections": [
+      {
+        "id": "rc1",
+        "selector": "#header",
+        "layout": null,
+        "hasBg": false,
+        "hint": "default-content",
+        "background": "#fcfffc",
+        "backgroundImage": null,
+        "colored": false,
+        "paintSelector": null
+      },
+      {
+        "id": "rc2",
+        "selector": "#page > hr",
+        "layout": null,
+        "hasBg": false,
+        "hint": "default-content",
+        "background": "#fcfffc",
+        "backgroundImage": null,
+        "colored": false,
+        "paintSelector": null
+      },
+      {
+        "id": "rc3",
+        "selector": "#main > section.hero",
+        "layout": "2x1",
+        "hasBg": true,
+        "hint": "block",
+        "background": "#fcfffc",
+        "backgroundImage": "gradient",
+        "colored": true,
+        "paintSelector": "#main > section.hero > div.hero__main"
+      },
+      {
+        "id": "rc4",
+        "selector": "#oe",
+        "layout": null,
+        "hasBg": true,
+        "hint": "block",
+        "background": "#e5e5e5",
+        "backgroundImage": null,
+        "colored": true,
+        "paintSelector": "#oe"
+      },
+      {
+        "id": "rc5",
+        "selector": "#main > section.new-hires",
+        "layout": "2x1",
+        "hasBg": true,
+        "hint": "block",
+        "background": "#fcfffc",
+        "backgroundImage": "gradient",
+        "colored": true,
+        "paintSelector": "#main > section.new-hires > div.new-hires__main"
+      },
+      {
+        "id": "rc6",
+        "selector": "#main > section.contacts",
+        "layout": null,
+        "hasBg": false,
+        "hint": "default-content",
+        "background": "#fcfffc",
+        "backgroundImage": null,
+        "colored": false,
+        "paintSelector": null
+      },
+      {
+        "id": "rc7",
+        "selector": "#main > section.rai-benefits",
+        "layout": null,
+        "hasBg": true,
+        "hint": "default-content",
+        "background": "#fcfffc",
+        "backgroundImage": "url",
+        "colored": false,
+        "paintSelector": null
+      }
+    ],
+    "invalidIgnore": []
+  },
+  "pageLayout": {
+    "box": {
+      "y": 818,
+      "height": 1554.390625
+    },
+    "splits": [],
+    "start": {
+      "kind": "heading",
+      "look": {
+        "font": "Aeroport, sans-serif",
+        "color": "rgb(0, 79, 159)",
+        "align": "start"
+      }
+    }
+  },
+  "blocks": [
+    {
+      "id": "1b8c72f89aa6",
+      "type": "default-content",
+      "detectionTier": 1,
+      "selector": "#header",
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 64
+      },
+      "visualChars": {
+        "colorScheme": "light",
+        "density": "minimal",
+        "imagePattern": "noimg",
+        "hasGrid": false,
+        "structure": "heading + link"
+      },
+      "description": "",
+      "features": {
+        "skeleton": "T",
+        "variant": "Tb",
+        "variantClean": "Tk"
+      },
+      "screenshot": null,
+      "html": "blocks/1b8c72f89aa6.html"
+    },
+    {
+      "id": "efee34b226b5",
+      "type": "columns",
+      "detectionTier": 1,
+      "selector": "#main > section.hero",
+      "bounds": {
+        "x": 0,
+        "y": 210,
+        "width": 1440,
+        "height": 608
+      },
+      "visualChars": {
+        "colorScheme": "light",
+        "density": "moderate",
+        "imagePattern": "noimg",
+        "hasGrid": true,
+        "structure": "heading + text + link + image"
+      },
+      "description": "hero",
+      "features": {
+        "skeleton": "~([T])",
+        "variant": "~w([Tw|T])",
+        "variantClean": "~w([Tw|T])"
+      },
+      "screenshot": "blocks/efee34b226b5.jpg",
+      "html": "blocks/efee34b226b5.html",
+      "variantId": "v_759f918ca6a8"
+    },
+    {
+      "id": "ab36e7252f66",
+      "type": "default-content",
+      "detectionTier": 1,
+      "selector": "#oe > div.oe-box > div > h2",
+      "bounds": {
+        "x": 208,
+        "y": 962,
+        "width": 1024,
+        "height": 72
+      },
+      "visualChars": {
+        "colorScheme": "light",
+        "density": "minimal",
+        "imagePattern": "noimg",
+        "hasGrid": false,
+        "structure": "heading"
+      },
+      "description": "",
+      "features": {
+        "skeleton": "T",
+        "variant": "Tb",
+        "variantClean": "Tk"
+      },
+      "screenshot": null,
+      "html": "blocks/ab36e7252f66.html"
+    },
+    {
+      "id": "daff6be9ce87",
+      "type": "default-content",
+      "detectionTier": 1,
+      "selector": "#oe > div.oe-box > div > p",
+      "bounds": {
+        "x": 208,
+        "y": 1050,
+        "width": 1024,
+        "height": 30
+      },
+      "visualChars": {
+        "colorScheme": "light",
+        "density": "minimal",
+        "imagePattern": "noimg",
+        "hasGrid": false,
+        "structure": "text"
+      },
+      "description": "",
+      "features": {
+        "skeleton": "T",
+        "variant": "Tb",
+        "variantClean": "Tk"
+      },
+      "screenshot": null,
+      "html": "blocks/daff6be9ce87.html"
+    },
+    {
+      "id": "21131bc56ddd",
+      "type": "columns",
+      "detectionTier": 1,
+      "selector": "#oe > div.oe-box > div > ol",
+      "bounds": {
+        "x": 208,
+        "y": 1128,
+        "width": 1024,
+        "height": 265
+      },
+      "visualChars": {
+        "colorScheme": "light",
+        "density": "moderate",
+        "imagePattern": "noimg",
+        "hasGrid": true,
+        "structure": "list + heading + text + link"
+      },
+      "description": "oe-box-steps",
+      "features": {
+        "skeleton": "[T]",
+        "variant": "[Tb]",
+        "variantClean": "[Tk]"
+      },
+      "screenshot": "blocks/21131bc56ddd.jpg",
+      "html": "blocks/21131bc56ddd.html",
+      "variantId": "v_3ed25bcad2e4"
+    },
+    {
+      "id": "feb03257b00f",
+      "type": "columns",
+      "detectionTier": 1,
+      "selector": "#lsa-spotlight > div.image-title-wrapper",
+      "bounds": {
+        "x": 192,
+        "y": 1529,
+        "width": 1056,
+        "height": 247
+      },
+      "visualChars": {
+        "colorScheme": "light",
+        "density": "moderate",
+        "imagePattern": "noimg",
+        "hasGrid": true,
+        "structure": "image + heading + text"
+      },
+      "description": "image-title-wrapper",
+      "features": {
+        "skeleton": "[T]",
+        "variant": "[T|Tw]",
+        "variantClean": "[T|Tw]"
+      },
+      "screenshot": "blocks/feb03257b00f.jpg",
+      "html": "blocks/feb03257b00f.html",
+      "variantId": "v_3ed25bcad2e4"
+    },
+    {
+      "id": "51e746e72f2e",
+      "type": "cards",
+      "detectionTier": 1,
+      "selector": "#lsa-spotlight > div.card-wrapper",
+      "bounds": {
+        "x": 192,
+        "y": 1808,
+        "width": 1056,
+        "height": 348
+      },
+      "visualChars": {
+        "colorScheme": "light",
+        "density": "moderate",
+        "imagePattern": "noimg",
+        "hasGrid": true,
+        "structure": "image + heading + text"
+      },
+      "description": "card-wrapper",
+      "features": {
+        "skeleton": "[~(T)|~(T)*1.25|~(T)]",
+        "variant": "[~w(Tb)|~w(Tb)*1.25|~w(Tb)]",
+        "variantClean": "[~w(Tk)|~w(Tk)*1.25|~w(Tk)]",
+        "set": true
+      },
+      "screenshot": "blocks/51e746e72f2e.jpg",
+      "html": "blocks/51e746e72f2e.html",
+      "variantId": "v_26e9369a55aa"
+    },
+    {
+      "id": "7c9f568d16b3",
+      "type": "unknown",
+      "detectionTier": 2,
+      "selector": "#lsa-spotlight > div.full-width-button",
+      "bounds": {
+        "x": 192,
+        "y": 2188,
+        "width": 1056,
+        "height": 56
+      },
+      "visualChars": {
+        "colorScheme": "light",
+        "density": "minimal",
+        "imagePattern": "noimg",
+        "hasGrid": false,
+        "structure": "link"
+      },
+      "description": "full-width-button",
+      "features": {
+        "skeleton": "~(T)",
+        "variant": "~w(Tw)",
+        "variantClean": "~w(Tw)"
+      },
+      "screenshot": "blocks/7c9f568d16b3.jpg",
+      "html": "blocks/7c9f568d16b3.html",
+      "variantId": "v_a74548023fe1"
+    },
+    {
+      "id": "5fd1010de8c9",
+      "type": "columns",
+      "detectionTier": 1,
+      "selector": "#main > section.new-hires",
+      "bounds": {
+        "x": 0,
+        "y": 2372,
+        "width": 1440,
+        "height": 496
+      },
+      "visualChars": {
+        "colorScheme": "light",
+        "density": "moderate",
+        "imagePattern": "noimg",
+        "hasGrid": true,
+        "structure": "image + heading + text + link"
+      },
+      "description": "new-hires",
+      "features": {
+        "skeleton": "~([T])",
+        "variant": "~w([T|Tw])",
+        "variantClean": "~w([T|Tk])"
+      },
+      "screenshot": "blocks/5fd1010de8c9.jpg",
+      "html": "blocks/5fd1010de8c9.html",
+      "variantId": "v_759f918ca6a8"
+    },
+    {
+      "id": "00d09079e278",
+      "type": "unknown",
+      "detectionTier": 2,
+      "selector": "#main > section.contacts > span.contacts__background",
+      "bounds": {
+        "x": 0,
+        "y": 2628,
+        "width": 1440,
+        "height": 838
+      },
+      "visualChars": {
+        "colorScheme": "light",
+        "density": "minimal",
+        "imagePattern": "large",
+        "hasGrid": false,
+        "structure": ""
+      },
+      "description": "contacts-background",
+      "features": {
+        "skeleton": "~@",
+        "variant": "~@",
+        "variantClean": "~@"
+      },
+      "screenshot": "blocks/00d09079e278.jpg",
+      "html": "blocks/00d09079e278.html",
+      "variantId": "v_330836937ff4"
+    },
+    {
+      "id": "881cca94056f",
+      "type": "default-content",
+      "detectionTier": 1,
+      "selector": "#contacts",
+      "bounds": {
+        "x": 536,
+        "y": 2916,
+        "width": 369,
+        "height": 184
+      },
+      "visualChars": {
+        "colorScheme": "light",
+        "density": "minimal",
+        "imagePattern": "noimg",
+        "hasGrid": false,
+        "structure": "heading"
+      },
+      "description": "offset-anchor",
+      "features": {
+        "skeleton": "T",
+        "variant": "Tw",
+        "variantClean": "Tw"
+      },
+      "screenshot": null,
+      "html": "blocks/881cca94056f.html"
+    },
+    {
+      "id": "19c144260e97",
+      "type": "default-content",
+      "detectionTier": 1,
+      "selector": "#main > section.contacts > p",
+      "bounds": {
+        "x": 275,
+        "y": 3116,
+        "width": 891,
+        "height": 60
+      },
+      "visualChars": {
+        "colorScheme": "light",
+        "density": "minimal",
+        "imagePattern": "noimg",
+        "hasGrid": false,
+        "structure": "text"
+      },
+      "description": "contacts-intro-text",
+      "features": {
+        "skeleton": "T",
+        "variant": "Tw",
+        "variantClean": "Tw"
+      },
+      "screenshot": null,
+      "html": "blocks/19c144260e97.html"
+    },
+    {
+      "id": "885a1fd000d2",
+      "type": "unknown",
+      "detectionTier": 2,
+      "selector": "#main > section.rai-benefits",
+      "bounds": {
+        "x": 0,
+        "y": 3450,
+        "width": 1440,
+        "height": 584
+      },
+      "visualChars": {
+        "colorScheme": "light",
+        "density": "moderate",
+        "imagePattern": "noimg",
+        "hasGrid": false,
+        "structure": "heading + text + link + button"
+      },
+      "description": "rai-benefits",
+      "features": {
+        "skeleton": "~@(T)",
+        "variant": "~@(Tw)",
+        "variantClean": "~@(Tw)"
+      },
+      "screenshot": "blocks/885a1fd000d2.jpg",
+      "html": "blocks/885a1fd000d2.html",
+      "variantId": "v_60ff88b9f807"
+    }
+  ],
+  "globalElements": {
+    "header": {
+      "selector": "header.header"
+    },
+    "footer": {
+      "selector": "footer.footer"
+    },
+    "isFirstCapture": true
+  }
+}

@@ -1,20 +1,95 @@
-footer {
-  background-color: var(--light-color);
-  font-size: var(--body-font-size-xs);
+footer .footer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background: linear-gradient(180deg, #0b2351 0%, #0e2b63 20%);
+  color: #fff;
+  font-size: 16px;
+  line-height: 24px;
 }
 
-footer .footer > div {
+/* decorative colour strip across the top. Reproduces the source's inline
+   image on a 24px line box (height = max(24px, image + 7px), image on the
+   baseline) without depending on standards vs quirks mode line-height rules */
+footer .footer .footer-decoration {
+  box-sizing: border-box;
+  display: flex;
+  align-items: flex-end;
+  min-height: 24px;
+  margin: 0 0 16px;
+  padding-bottom: 7px;
+}
+
+footer .footer .footer-decoration img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* main row: brand left, links right, legal copy full width below */
+footer .footer .footer-section {
+  box-sizing: border-box;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1440px;
   margin: auto;
-  max-width: 1200px;
-  padding: 40px 24px 24px;
+  padding: 64px 16px;
+  text-align: center;
 }
 
-footer .footer p {
+footer .footer .footer-section a {
+  display: block;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 30px;
+  text-decoration: none;
+}
+
+footer .footer .footer-brand {
   margin: 0;
 }
 
-@media (width >= 900px) {
-  footer .footer > div {
-    padding: 40px 32px 24px;
+/* bottom padding keeps the source's 82px-tall link hit area */
+footer .footer .footer-brand a {
+  padding-bottom: 40px;
+}
+
+footer .footer .footer-brand img {
+  display: block;
+  width: 200px;
+  max-width: 100%;
+  height: auto;
+}
+
+footer .footer .footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+footer .footer .footer-text {
+  width: 100%;
+  margin: 16px 0;
+  font-size: 20px;
+  line-height: 30px;
+  text-align: left;
+}
+
+footer .footer .footer-section a:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+@media (width >= 600px) {
+  footer .footer .footer-links {
+    flex-wrap: nowrap;
+    gap: 24px;
   }
 }

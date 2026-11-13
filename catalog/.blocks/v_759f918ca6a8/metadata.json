@@ -1,0 +1,39 @@
+{
+  "id": "v_759f918ca6a8",
+  "type": "hero",
+  "canonicalModel": "standalone",
+  "version": "1.0.0",
+  "created": "2026-11-13T01:56:40.029Z",
+  "sourceContext": {
+    "originUrl": "https://www.livewellatrai.com/",
+    "discoveredDuring": "site-scope-analysis"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "moderate",
+    "hasGrid": true,
+    "imagePattern": "noimg",
+    "structure": "heading + text + link + image"
+  },
+  "layoutKey": "~([T])",
+  "colour": "~w([T|Tk])",
+  "usage": {
+    "pagesUsing": [
+      {
+        "url": "https://www.livewellatrai.com/",
+        "instanceId": "efee34b226b5",
+        "instanceIds": [
+          "efee34b226b5",
+          "5fd1010de8c9"
+        ],
+        "screenshot": ".pages/www_livewellatrai_com--6b38b2b3/blocks/efee34b226b5.jpg"
+      }
+    ],
+    "reuseCount": 1
+  },
+  "naming": {
+    "confidence": "high",
+    "reason": "top-of-page gradient pill with heading, text and CTA beside a circular photo",
+    "mergedInto": null
+  }
+}

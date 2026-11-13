@@ -1,0 +1,86 @@
+/* cards-steps: source #lsa-spotlight > .card-wrapper (white step cards on the green LSA card) */
+
+.cards-steps {
+  margin: 32px 0;
+  color: var(--text-color);
+  font-family: var(--body-font-family);
+}
+
+.cards-steps > ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+}
+
+.cards-steps > ol > li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-self: stretch;
+  box-sizing: border-box;
+  padding: 32px;
+  border-radius: var(--radius-card);
+  background-color: var(--white);
+  color: var(--text-color);
+}
+
+.cards-steps .cards-steps-icon {
+  display: flex;
+  justify-content: center;
+  margin: 0 0 16px;
+}
+
+.cards-steps .cards-steps-icon picture {
+  display: block;
+}
+
+.cards-steps .cards-steps-icon img {
+  display: block;
+  width: 80px;
+  height: 80px;
+  object-fit: fill;
+}
+
+.cards-steps .cards-steps-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.cards-steps .cards-steps-body :is(h2, h3, h4, h5, h6) {
+  margin: 0 0 16px;
+  font-family: var(--heading-font-family);
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 30px;
+  color: var(--text-color);
+  text-align: start;
+}
+
+.cards-steps .cards-steps-body p {
+  margin: 0 0 16px;
+  font-family: var(--body-font-family);
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 30px;
+  color: var(--text-color);
+  text-align: start;
+}
+
+@media (width >= 900px) {
+  .cards-steps > ol {
+    flex-direction: row;
+    align-items: stretch;
+  }
+
+  .cards-steps .cards-steps-body :is(h2, h3, h4, h5, h6) {
+    font-size: 24px;
+    line-height: 36px;
+  }
+}

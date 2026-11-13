@@ -1,0 +1,98 @@
+/* source: section.rai-benefits sits flush against the footer (no bottom margin) */
+main > .section.hero-cta-container:last-child {
+  margin-bottom: 0;
+}
+
+.hero-cta-container .hero-cta-wrapper {
+  max-width: none;
+  padding: 0;
+}
+
+/* source: padding 160px 16px, centred white text over the photo with a 50% black overlay */
+.hero-cta {
+  --button-color: var(--white);
+  --button-contrast: var(--dark-blue);
+
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  padding: 160px 16px;
+  color: var(--white);
+  text-align: center;
+}
+
+.hero-cta .hero-cta-background {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+}
+
+.hero-cta .hero-cta-background::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgb(0 0 0 / 50%);
+}
+
+.hero-cta .hero-cta-background picture,
+.hero-cta .hero-cta-background img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 50%;
+}
+
+.hero-cta .hero-cta-content {
+  position: relative;
+}
+
+/* source h2: 32px/48px mobile, 48px/72px desktop, 700, margin 0 */
+.hero-cta .hero-cta-content h2 {
+  margin: 0;
+  color: var(--white);
+  font-size: var(--heading-font-size-xl);
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+/* source p: 24px/36px, margin 32px, measured 763px wide on desktop */
+.hero-cta .hero-cta-content p {
+  max-width: 763px;
+  margin: 32px auto;
+  color: var(--white);
+  font-size: 24px;
+  line-height: 36px;
+}
+
+.hero-cta .hero-cta-content p.button-container {
+  display: block;
+  max-width: none;
+  margin: 0;
+  line-height: 0;
+}
+
+.hero-cta .hero-cta-content > :first-child {
+  margin-top: 0;
+}
+
+.hero-cta .hero-cta-content > :last-child {
+  margin-bottom: 0;
+}
+
+/* source button.button--with-arrow: white 2px pill, 8px 64px 8px 32px, 700 24px/36px */
+main .hero-cta a.button.accent:any-link {
+  font-size: 24px;
+  line-height: 36px;
+}
+
+.hero-cta.no-image {
+  --button-color: var(--dark-blue);
+  --button-contrast: var(--white);
+
+  color: var(--text-color);
+}
+
+.hero-cta.no-image .hero-cta-content :is(h2, p) {
+  color: var(--text-color);
+}
