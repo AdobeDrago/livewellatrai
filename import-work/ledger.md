@@ -23,12 +23,20 @@ Rebuild (local): `aem up` on http://localhost:3021/ with the section files in `p
 | Contacts 1 | `cards` (`contacts`), `styles.css` | toggle button from the first row's label; list + callout collapsed until pressed; wrappers `display: contents` | 127 → 0 | 18.7 → 100 / 18.7 → 100 | | |
 | Footer 2–4 | `footer` | 1px text raster offset tried with ±0.3/0.6px nudges; no gain, reverted (stop rule) | 0 → 0 | 98.79 / 98.9 (unchanged) | | |
 | Lint | all | max-len, destructuring, selector order, duplicate selector | 0 → 0 | unchanged | | |
+| Publish | DA | 15 images to DA `/media/` (201); nav, footer, index uploaded and previewed on `livewellatrai-home-parity`; served blocks checked in `/index.plain.html` (all 6 in order) | n/a | n/a | | |
+| Preview gate 1 | — | offsets: footer +40px (DA serves the metadata section as an empty last div, so the RAI benefits section kept its 40px bottom margin) | image pairing only | 100 / 100 (footer 98.79 / 98.9) | | |
+| Fix | `styles.css`, `hero-cta.css` | `main > .section:empty { display: none }`; the hero-cta section is also flush when followed by the empty last section | offsets 12/14 → 14/14 | unchanged | | |
+| Preview gate 2 | — | 4/14 pass; all 36 remaining mismatches are `UNPAIRED` image pairings (EDS renames media to `media_<hash>`); pixels 100% except the footer (98.79 / 98.9) | 36 (pairing only) | 100 / 100 | | |
 | **Total since plan** | | | | | **+118.8k** (105.9k → 224.7k) | **+$4.39** ($341.91 → $346.30) |
 
 ## Results (local, http://localhost:3021/)
 - Gate: **12/14 PASS**. All sections are at 0 computed-style mismatches. The footer fails the pixel bar at both widths: 98.79% (1440) and 98.9% (1280).
 - Offsets: 14/14 sections at the source's page position.
 - `npm run lint`: clean.
+
+## Results (branch preview, https://livewellatrai-home-parity--livewellatrai--adobedrago.aem.page/)
+- Gate: 4/14 PASS. Every failure except the footer's pixel score is the gate's image-name pairing (`media_<hash>` renames); pixels are 100% for those sections.
+- Offsets: 14/14.
 
 ## Residuals / not verified
 - Footer pixels: the text paragraphs render 1px lower than the source's, although their layout boxes match (4181.72 vs 4181.73 page Y at 1280). Within the footer, the shift covers only the text. The result depended on the footer's page position (it passed at 1280 when the page was taller). Not fixed; stop rule.
