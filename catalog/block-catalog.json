@@ -1,0 +1,101 @@
+{
+  "block-catalog": {
+    "schemaVersion": 2,
+    "captured": "2026-11-13T01:56:41.027Z",
+    "totalBlockVariants": 6,
+    "totalBlocksProcessed": 8,
+    "newVariantsCreated": 6,
+    "variantsReused": 2,
+    "layoutKeyThreshold": 0.85,
+    "completionStatus": {
+      "analyzed": 1,
+      "failed": 0
+    },
+    "blockVariants": {
+      "v_3ed25bcad2e4": {
+        "id": "v_3ed25bcad2e4",
+        "name": "columns-promo",
+        "type": "columns",
+        "canonicalModel": "standalone",
+        "pagesFound": 1,
+        "placedBy": "naming",
+        "confidenceLevel": "high",
+        "confidenceReason": "fixed two-part banner: logo badge left, heading and paragraph right",
+        "description": "image + heading + text",
+        "screenshots": [
+          ".pages/www_livewellatrai_com--6b38b2b3/blocks/feb03257b00f.jpg"
+        ]
+      },
+      "v_759f918ca6a8": {
+        "id": "v_759f918ca6a8",
+        "name": "hero-split",
+        "type": "hero",
+        "canonicalModel": "standalone",
+        "pagesFound": 1,
+        "placedBy": "naming",
+        "confidenceLevel": "high",
+        "confidenceReason": "top-of-page gradient pill with heading, text and CTA beside a circular photo",
+        "description": "heading + text + link + image",
+        "screenshots": [
+          ".pages/www_livewellatrai_com--6b38b2b3/blocks/efee34b226b5.jpg"
+        ]
+      },
+      "v_26e9369a55aa": {
+        "id": "v_26e9369a55aa",
+        "name": "cards-steps",
+        "type": "cards",
+        "canonicalModel": "standalone",
+        "pagesFound": 1,
+        "placedBy": "naming",
+        "confidenceLevel": "high",
+        "confidenceReason": "look-alike white cards each with icon, title and short text describing process steps",
+        "description": "image + heading + text",
+        "screenshots": [
+          ".pages/www_livewellatrai_com--6b38b2b3/blocks/51e746e72f2e.jpg"
+        ]
+      },
+      "v_a74548023fe1": {
+        "id": "v_a74548023fe1",
+        "name": "notice-bar",
+        "type": "custom",
+        "canonicalModel": "standalone",
+        "pagesFound": 1,
+        "placedBy": "naming",
+        "confidenceLevel": "low",
+        "confidenceReason": "slim rounded gradient strip with one line of linked text; could also be default-content in a styled section",
+        "description": "link",
+        "screenshots": [
+          ".pages/www_livewellatrai_com--6b38b2b3/blocks/7c9f568d16b3.jpg"
+        ]
+      },
+      "v_330836937ff4": {
+        "id": "v_330836937ff4",
+        "name": "default-content",
+        "type": "default-content",
+        "canonicalModel": "standalone",
+        "pagesFound": 1,
+        "placedBy": "naming",
+        "confidenceLevel": "low",
+        "confidenceReason": "only a decorative shapes background (section style) behind a typed heading, paragraph and button; the shapes also extend behind the hero above",
+        "description": "Block variant: default-content",
+        "screenshots": [
+          ".pages/www_livewellatrai_com--6b38b2b3/blocks/00d09079e278.jpg"
+        ]
+      },
+      "v_60ff88b9f807": {
+        "id": "v_60ff88b9f807",
+        "name": "hero-cta",
+        "type": "hero",
+        "canonicalModel": "standalone",
+        "pagesFound": 1,
+        "placedBy": "naming",
+        "confidenceLevel": "high",
+        "confidenceReason": "full-width photo background with overlaid heading, text and button",
+        "description": "heading + text + link + button",
+        "screenshots": [
+          ".pages/www_livewellatrai_com--6b38b2b3/blocks/885a1fd000d2.jpg"
+        ]
+      }
+    }
+  }
+}

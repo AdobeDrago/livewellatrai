@@ -25,3 +25,50 @@
   aspect-ratio: 4 / 3;
   object-fit: cover;
 }
+
+/*
+ * navy section ("Your contacts" vendor tiles). Source: .contact-tiles grid
+ * repeat(auto-fit, minmax(20rem, 1fr)), gap 1rem, margin-top 5rem; tiles
+ * rgba(255 255 255 / 5%), radius 5px, padding 1.5rem, left-aligned; light-blue
+ * h3 and links paragraph (the "|" separators), white underlined links; the
+ * source <hr> (2px light-blue, 8px margins) is drawn as the links paragraph's top border.
+ */
+main .section.navy .cards {
+  margin-top: 80px;
+}
+
+main .section.navy .cards > ul {
+  grid-template-columns: repeat(auto-fit, minmax(min(20rem, 100%), 1fr));
+  gap: 16px;
+}
+
+main .section.navy .cards > ul > li {
+  border: 0;
+  border-radius: 5px;
+  padding: 24px;
+  background-color: rgb(255 255 255 / 5%);
+  text-align: left;
+}
+
+main .section.navy .cards .cards-card-body {
+  margin: 0;
+}
+
+main .section.navy .cards h3 {
+  color: var(--light-blue);
+}
+
+main .section.navy .cards .cards-card-body > p:has(> a) {
+  color: var(--light-blue);
+}
+
+main .section.navy .cards .cards-card-body > p:not(:first-child):has(> a) {
+  border-top: 2px solid var(--light-blue);
+  padding-top: 16px;
+}
+
+main .section.navy .cards .cards-card-body > p:has(> a) a:any-link {
+  display: inline-block;
+  color: var(--white);
+  text-decoration: underline;
+}

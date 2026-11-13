@@ -1,0 +1,165 @@
+{
+  "metadata": {
+    "projectType": "da"
+  },
+  "templates": [
+    {
+      "name": "homepage",
+      "urls": [
+        "https://www.livewellatrai.com/"
+      ],
+      "description": "Single long-scroll landing page: split hero with image, stacked full-width sections with in-page anchor navigation, step cards, promo banner and call-to-action sections",
+      "blocks": [
+        {
+          "name": "hero-split",
+          "instances": [
+            "main > section.hero",
+            "main > section.new-hires"
+          ],
+          "pageInstances": {
+            "https://www.livewellatrai.com/": [
+              "#main > section.hero",
+              "#main > section.new-hires"
+            ]
+          }
+        },
+        {
+          "name": "columns-promo",
+          "instances": [
+            "#oe ol.oe-box__steps",
+            "#lsa-spotlight > div.image-title-wrapper"
+          ],
+          "pageInstances": {
+            "https://www.livewellatrai.com/": [
+              "#oe > div.oe-box > div > ol",
+              "#lsa-spotlight > div.image-title-wrapper"
+            ]
+          }
+        },
+        {
+          "name": "cards-steps",
+          "instances": [
+            "#lsa-spotlight > div.card-wrapper"
+          ],
+          "pageInstances": {
+            "https://www.livewellatrai.com/": [
+              "#lsa-spotlight > div.card-wrapper"
+            ]
+          }
+        },
+        {
+          "name": "notice-bar",
+          "instances": [
+            "#lsa-spotlight > div.full-width-button"
+          ],
+          "pageInstances": {
+            "https://www.livewellatrai.com/": [
+              "#lsa-spotlight > div.full-width-button"
+            ]
+          }
+        },
+        {
+          "name": "hero-cta",
+          "instances": [
+            "main > section.rai-benefits"
+          ],
+          "pageInstances": {
+            "https://www.livewellatrai.com/": [
+              "#main > section.rai-benefits"
+            ]
+          }
+        },
+        {
+          "name": "cards",
+          "instances": [
+            "section.contacts div.contact-tiles"
+          ]
+        }
+      ],
+      "sections": [
+        {
+          "id": "hero",
+          "name": "hero",
+          "selector": [
+            "main > section.hero"
+          ],
+          "style": null,
+          "blocks": [
+            "hero-split"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "enrolling",
+          "name": "enrolling-in-benefits",
+          "selector": [
+            "#oe > div.oe-box",
+            "#oe"
+          ],
+          "style": "light-grey",
+          "blocks": [
+            "columns-promo"
+          ],
+          "defaultContent": [
+            "#oe > div.oe-box > div > h2",
+            "#oe > div.oe-box > div > p"
+          ]
+        },
+        {
+          "id": "lsa-spotlight",
+          "name": "lsa-spotlight",
+          "selector": [
+            "#lsa-spotlight"
+          ],
+          "style": "green",
+          "blocks": [
+            "columns-promo",
+            "cards-steps",
+            "notice-bar"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "new-hires",
+          "name": "new-hires",
+          "selector": [
+            "main > section.new-hires"
+          ],
+          "style": null,
+          "blocks": [
+            "hero-split"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "contacts",
+          "name": "contacts",
+          "selector": [
+            "main > section.contacts"
+          ],
+          "style": "navy",
+          "blocks": [
+            "cards"
+          ],
+          "defaultContent": [
+            "#contacts",
+            "#main > section.contacts > p",
+            "section.contacts div.callout"
+          ]
+        },
+        {
+          "id": "rai-benefits",
+          "name": "rai-benefits",
+          "selector": [
+            "main > section.rai-benefits"
+          ],
+          "style": null,
+          "blocks": [
+            "hero-cta"
+          ],
+          "defaultContent": []
+        }
+      ]
+    }
+  ]
+}

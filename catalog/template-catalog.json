@@ -1,0 +1,11 @@
+{
+  "templates": [
+    {
+      "name": "homepage",
+      "urls": [
+        "https://www.livewellatrai.com/"
+      ],
+      "description": "Single long-scroll landing page: split hero with image, stacked full-width sections with in-page anchor navigation, step cards, promo banner and call-to-action sections"
+    }
+  ]
+}

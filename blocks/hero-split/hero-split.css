@@ -1,0 +1,183 @@
+/*
+ * hero-split: source section.hero / section.new-hires (.hero__main / .new-hires__main).
+ * The block is the opaque gradient pill (full width; desktop source radius 320px / 50% for
+ * hero, 256px / 50% for "New hires"); the white/#e5e5e5 and navy bands around it are
+ * section styles in styles/styles.css.
+ * Mobile: photo on top (round, 375px), lime crescent below, centered text.
+ * Desktop: text 0 128px beside a 608px photo (hero) or a 496px photo with two crescents
+ * (48px block padding only matters when narrow viewports make the text taller) and
+ * 256px before the text (media-first, "New hires"). Below 1440px the
+ * photo, side padding and crescent offsets scale with the viewport at the 1440px ratios.
+ */
+main > .section > .hero-split-wrapper {
+  max-width: 100%;
+  padding: 0;
+}
+
+.hero-split {
+  --button-color: var(--white);
+  --button-contrast: var(--dark-blue);
+
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-pill);
+  background-image: linear-gradient(0deg, var(--mid-blue) 0, var(--main-green) 342px);
+}
+
+.hero-split .hero-split-media {
+  flex: 0 0 100%;
+  order: -1;
+}
+
+.hero-split .hero-split-media picture {
+  display: block;
+}
+
+.hero-split .hero-split-media img {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1;
+  margin: 0 0 16px;
+  border-radius: 100%;
+  box-shadow: 0 50px 0 0 var(--light-green);
+  object-fit: cover;
+}
+
+.hero-split.media-first {
+  padding-top: 32px;
+  border-radius: 0 0 70% 70% / 30%;
+  background-image: linear-gradient(180deg, var(--dark-blue) 20%, var(--main-green), var(--main-green) 48.49%, var(--mid-blue) 100%);
+}
+
+/* source .new-hires__image: unscaled 585px photo cropped in place */
+.hero-split.media-first .hero-split-media img {
+  left: -1px;
+  object-fit: none;
+  object-position: 50% 30%;
+}
+
+.hero-split .hero-split-content {
+  flex: 1 1 100%;
+  min-width: 0;
+  padding: 64px 32px 96px;
+  color: var(--white);
+  text-align: center;
+}
+
+.hero-split.media-first .hero-split-content {
+  padding: 64px 32px 80px;
+}
+
+.hero-split .hero-split-content :is(h1, h2, h3, h4, h5, h6) {
+  margin: 0;
+  color: var(--white);
+}
+
+.hero-split .hero-split-content :is(h1, h2, h3, h4, h5, h6):has(+ p) {
+  margin-bottom: 16px;
+}
+
+.hero-split.media-first .hero-split-content :is(h1, h2, h3, h4, h5, h6):has(+ p) {
+  margin-bottom: 20px;
+}
+
+.hero-split .hero-split-content p {
+  margin: 0 0 32px;
+  font-size: var(--body-font-size-m);
+  line-height: 30px;
+}
+
+.hero-split .hero-split-content p.button-wrapper {
+  margin: 0;
+}
+
+.hero-split .hero-split-content > :last-child {
+  margin-bottom: 0;
+}
+
+.hero-split .hero-split-content a.button:any-link {
+  text-align: inherit;
+}
+
+.hero-split .hero-split-content a:any-link:not(.button) {
+  color: var(--white);
+}
+
+/* source .new-hires__main .button--with-arrow:hover: stays outlined white, only the arrow nudges */
+main .hero-split.media-first a.button.accent:is(:hover, :focus-visible) {
+  background-color: transparent;
+  color: var(--button-color);
+}
+
+@media (width >= 900px) {
+  .hero-split {
+    flex-wrap: nowrap;
+    border-radius: min(320px, 22.23vw) / 50%;
+    background-image: linear-gradient(90deg, var(--mid-blue) 0, var(--main-green) 800px);
+  }
+
+  .hero-split.media-first {
+    padding-top: 0;
+    border-radius: min(256px, 17.78vw) / 50%;
+    background-image: linear-gradient(270deg, var(--mid-blue) 0%, var(--main-green) 43.65%);
+  }
+
+  .hero-split .hero-split-media {
+    flex: 0 0 auto;
+    width: min(608px, 42.25vw);
+  }
+
+  .hero-split:not(.media-first) .hero-split-media {
+    order: 1;
+  }
+
+  .hero-split.media-first .hero-split-media {
+    width: min(496px, 34.45vw);
+  }
+
+  .hero-split .hero-split-media img {
+    margin: 0;
+    box-shadow: max(-90px, -6.25vw) 0 0 min(10px, 0.7vw) var(--light-green);
+  }
+
+  .hero-split.media-first .hero-split-media img {
+    border-radius: 0 100% 100% 0;
+    box-shadow: min(100px, 6.95vw) 0 0 min(10px, 0.7vw) var(--mid-green), min(200px, 13.89vw) 0 0 min(10px, 0.7vw) var(--light-green);
+  }
+
+  .hero-split .hero-split-content {
+    flex: 1 1 0%;
+    padding: 48px min(128px, 8.9vw);
+    text-align: start;
+  }
+
+  .hero-split.media-first .hero-split-content {
+    padding: 48px min(128px, 8.9vw) 48px min(256px, 17.8vw);
+  }
+
+  .hero-split .hero-split-content :is(h1, h2, h3, h4, h5, h6):has(+ p) {
+    margin-bottom: 0;
+  }
+
+  .hero-split .hero-split-content p {
+    margin: 32px 0;
+  }
+
+  .hero-split.media-first .hero-split-content :is(h1, h2, h3, h4, h5, h6):has(+ p) {
+    margin-bottom: 24px;
+  }
+
+  .hero-split.media-first .hero-split-content p {
+    margin: 0 0 32px;
+  }
+
+  .hero-split .hero-split-content p.button-wrapper {
+    margin: 0;
+  }
+}

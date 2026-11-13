@@ -1,0 +1,39 @@
+{
+  "id": "v_3ed25bcad2e4",
+  "type": "columns",
+  "canonicalModel": "standalone",
+  "version": "1.0.0",
+  "created": "2026-11-13T01:56:40.028Z",
+  "sourceContext": {
+    "originUrl": "https://www.livewellatrai.com/",
+    "discoveredDuring": "site-scope-analysis"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "moderate",
+    "hasGrid": true,
+    "imagePattern": "noimg",
+    "structure": "image + heading + text"
+  },
+  "layoutKey": "[T]",
+  "colour": "[Tk]",
+  "usage": {
+    "pagesUsing": [
+      {
+        "url": "https://www.livewellatrai.com/",
+        "instanceId": "feb03257b00f",
+        "instanceIds": [
+          "feb03257b00f",
+          "21131bc56ddd"
+        ],
+        "screenshot": ".pages/www_livewellatrai_com--6b38b2b3/blocks/feb03257b00f.jpg"
+      }
+    ],
+    "reuseCount": 1
+  },
+  "naming": {
+    "confidence": "high",
+    "reason": "fixed two-part banner: logo badge left, heading and paragraph right",
+    "mergedInto": null
+  }
+}

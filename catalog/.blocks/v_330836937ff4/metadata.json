@@ -1,0 +1,38 @@
+{
+  "id": "v_330836937ff4",
+  "type": "default-content",
+  "canonicalModel": "standalone",
+  "version": "1.0.0",
+  "created": "2026-11-13T01:56:40.029Z",
+  "sourceContext": {
+    "originUrl": "https://www.livewellatrai.com/",
+    "discoveredDuring": "site-scope-analysis"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "minimal",
+    "hasGrid": false,
+    "imagePattern": "large",
+    "structure": ""
+  },
+  "layoutKey": "~@",
+  "colour": "~@",
+  "usage": {
+    "pagesUsing": [
+      {
+        "url": "https://www.livewellatrai.com/",
+        "instanceId": "00d09079e278",
+        "instanceIds": [
+          "00d09079e278"
+        ],
+        "screenshot": ".pages/www_livewellatrai_com--6b38b2b3/blocks/00d09079e278.jpg"
+      }
+    ],
+    "reuseCount": 1
+  },
+  "naming": {
+    "confidence": "low",
+    "reason": "only a decorative shapes background (section style) behind a typed heading, paragraph and button; the shapes also extend behind the hero above",
+    "mergedInto": null
+  }
+}

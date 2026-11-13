@@ -1,0 +1,35 @@
+{
+  "analysis-summary": {
+    "status": "complete",
+    "metadata": {
+      "siteUrl": "https://www.livewellatrai.com/",
+      "siteName": "www.livewellatrai.com",
+      "analysisDate": "2026-11-13",
+      "rootPageTitle": "Reynolds | LiveWell"
+    },
+    "metrics": {
+      "urlDiscoveryMethod": "crawl",
+      "totalPages": 1,
+      "localeCount": 1,
+      "locales": [
+        {
+          "locale": "en",
+          "pages": 1
+        }
+      ],
+      "totalTemplates": 1,
+      "totalBlockTypes": 6,
+      "unknownBlockVariants": 0,
+      "edsBlockVariants": 6,
+      "pagesAnalyzed": 1,
+      "percentAnalyzed": 100,
+      "pagesPending": 0,
+      "pagesFailed": 0,
+      "blockDetectionCrashes": 0,
+      "blockNaming": "applied"
+    },
+    "errors": {
+      "totalCount": 2
+    }
+  }
+}

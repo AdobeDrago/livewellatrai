@@ -1,0 +1,40 @@
+{
+  "analysis-urls-all": {
+    "captured": "2026-11-13T01:55:45.932Z",
+    "totalUrls": 1,
+    "totalDocuments": 3,
+    "method": "crawl",
+    "sitemapURL": null,
+    "robotsTxtFound": true,
+    "robotsTxtRulesApplied": true,
+    "limitations": "Single-page WordPress site: the only published page is the homepage (confirmed via wp-json pages list); subsections are in-page anchors.",
+    "confidence": "85%",
+    "statusBreakdown": {
+      "success": 1,
+      "redirect": 0,
+      "clientError": 0,
+      "serverError": 0,
+      "errorTimeout": 0
+    },
+    "urls": [
+      {
+        "url": "https://www.livewellatrai.com/",
+        "status": 200
+      }
+    ],
+    "documents": [
+      {
+        "url": "https://www.livewellatrai.com/wp-content/uploads/REYNOLDS-2027-OE-Guide-WEB-final.pdf",
+        "status": 200
+      },
+      {
+        "url": "https://www.livewellatrai.com/wp-content/uploads/Reynolds-2026-OE-Guide-WEB-final.pdf",
+        "status": 200
+      },
+      {
+        "url": "https://www.livewellatrai.com/wp-content/uploads/REYNOLDS-2027-Vol-Insurance-final.pdf",
+        "status": 200
+      }
+    ]
+  }
+}
