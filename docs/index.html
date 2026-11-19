@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Live Well at RAI — livewellatrai.com → EDS handover</title>
+<meta name="description" content="Home page rebuilt with a family of purpose-built blocks (hero-split, hero-cta, columns-promo, cards-steps, notice-bar) plus header and footer; merged via PRs #1 and #2.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;600;700&family=Source+Code+Pro:wght@400;600&display=swap" rel="stylesheet">
+<style>
+
+  :root {
+    /* Viasat brand (mirrors styles/styles.css and block CSS) */
+    --accent: #2a5db0;
+    --accent-hover: #204b90;
+    --accent-text: #1f4e99; /* AA-compliant on light bg */
+    --accent-on-dark: #9bbcf5;
+    --ink: #1b2433;
+    --ink-alt: #1b2433;
+    --accent-pale: #e8f0fc;
+    
+
+    --gray-50: #ffffff;
+    --gray-75: #fafbfc;
+    --gray-100: #f2f5f8;
+    --gray-200: #e6eaee;
+    --gray-300: #dde2e7;
+    --gray-400: #c4ccd3;
+    --gray-500: #a9b3bc;
+    --gray-600: #5f6b75;
+    --gray-700: #66727c;
+    --gray-800: #465967;
+    --gray-900: #202e39;
+
+    --font: 'Source Sans 3', ui-sans-serif, system-ui, -apple-system, sans-serif;
+    --mono: 'Source Code Pro', 'Fira Mono', 'Courier New', monospace;
+    --sidebar-width: 248px;
+    --content-max: 940px;
+    --header-h: 56px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: var(--font);
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--gray-900);
+    background: var(--gray-50);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  a { color: var(--accent-text); }
+
+  /* ── TOP NAV ── */
+  .topnav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: var(--header-h);
+    background: var(--ink-alt);
+    display: flex;
+    align-items: center;
+    padding: 0 24px;
+    gap: 16px;
+    z-index: 100;
+  }
+  .topnav-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    font-weight: 700;
+    color: #fff;
+    font-size: 15px;
+    letter-spacing: -0.01em;
+  }
+  .topnav-logo .mark {
+    width: 30px; height: 30px;
+    border-radius: 6px;
+    background: var(--accent-on-dark);
+    color: var(--ink);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 15px;
+    flex-shrink: 0;
+  }
+  .topnav-divider { width: 1px; height: 20px; background: #3c4c58; }
+  .topnav-title {
+    color: #d3dae0;
+    font-size: 14px;
+    font-weight: 400;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .topnav-badge {
+    margin-left: auto;
+    background: var(--accent-on-dark);
+    color: var(--ink);
+    font-size: 11px;
+    padding: 3px 10px;
+    border-radius: 12px;
+    letter-spacing: 0.04em;
+    font-weight: 700;
+    text-transform: uppercase;
+    flex-shrink: 0;
+  }
+
+  /* ── LAYOUT ── */
+  .layout { display: flex; margin-top: var(--header-h); min-height: calc(100vh - var(--header-h)); }
+
+  /* ── SIDEBAR ── */
+  .sidebar {
+    width: var(--sidebar-width);
+    flex-shrink: 0;
+    position: sticky;
+    top: var(--header-h);
+    height: calc(100vh - var(--header-h));
+    overflow-y: auto;
+    border-right: 1px solid var(--gray-200);
+    background: var(--gray-75);
+    padding: 24px 0 40px;
+  }
+  .sidebar-section { margin-bottom: 8px; }
+  .sidebar-label {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--gray-600);
+    padding: 8px 20px 4px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .sidebar-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 20px;
+    font-size: 13px;
+    color: var(--gray-800);
+    text-decoration: none;
+    border-left: 2px solid transparent;
+    transition: background 0.1s, color 0.1s, border-color 0.1s;
+  }
+  .sidebar-link:hover { background: var(--gray-200); color: var(--gray-900); }
+  .sidebar-link.active {
+    background: var(--accent-pale);
+    color: var(--accent-text);
+    border-left-color: var(--accent);
+    font-weight: 700;
+  }
+  .sidebar-link .icon { width: 16px; height: 16px; opacity: 0.6; flex-shrink: 0; }
+  .sidebar-link.active .icon { opacity: 1; }
+
+  /* ── MAIN ── */
+  .main { flex: 1; min-width: 0; padding: 48px 56px 80px; }
+  .main-inner { max-width: var(--content-max); }
+
+  /* ── PAGE HERO ── */
+  .page-hero {
+    padding-bottom: 32px;
+    border-bottom: 1px solid var(--gray-200);
+    margin-bottom: 48px;
+    scroll-margin-top: calc(var(--header-h) + 48px);
+  }
+  .page-hero-eyebrow {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--accent-text);
+    margin-bottom: 8px;
+  }
+  .page-hero h1 {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1.2;
+    margin-bottom: 12px;
+  }
+  .page-hero-sub { font-size: 16px; color: var(--gray-700); max-width: 640px; line-height: 1.5; }
+
+  /* ── SECTIONS ── */
+  .doc-section { margin-bottom: 56px; scroll-margin-top: calc(var(--header-h) + 24px); }
+  .doc-section h2 {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+  }
+  .section-rule { height: 1px; background: var(--gray-200); margin: 12px 0 24px; }
+  .doc-section h3 { font-size: 14px; font-weight: 700; color: var(--gray-900); margin: 24px 0 8px; }
+  .doc-section p { font-size: 14px; color: var(--gray-800); margin-bottom: 12px; line-height: 1.65; }
+
+  /* ── SECTION ICON BADGE ── */
+  .section-icon {
+    width: 28px; height: 28px;
+    border-radius: 6px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .icon-purple { background: var(--accent-pale); color: var(--accent); }
+  .icon-ink    { background: #eceef0; color: var(--ink); }
+  .icon-green  { background: #eaf6f1; color: #268e6c; }
+  .icon-seafoam{ background: #e6f4f4; color: #16878c; }
+  .icon-orange { background: #fff4e5; color: #da7b11; }
+  .icon-blue   { background: #e9f1fc; color: #0d51b5; }
+
+  /* ── URL CARDS ── */
+  .url-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  .url-card {
+    background: var(--gray-50);
+    border: 1px solid var(--gray-200);
+    border-radius: 8px;
+    padding: 14px 16px;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    transition: border-color 0.15s, box-shadow 0.15s;
+  }
+  .url-card:hover { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent); }
+  .url-card-label {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--gray-600);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .url-card-label .dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+  .dot-purple { background: var(--accent); }
+  .dot-ink    { background: var(--ink); }
+  .dot-green  { background: #268e6c; }
+  .dot-orange { background: #da7b11; }
+  .url-card-title { font-size: 13px; font-weight: 700; color: var(--gray-900); }
+  .url-card-url { font-size: 12px; font-family: var(--mono); color: var(--accent-text); word-break: break-all; }
+  .url-card-desc { font-size: 12px; color: var(--gray-600); margin-top: 2px; }
+
+  /* ── CODE BLOCKS ── */
+  .code-block {
+    background: var(--ink);
+    color: #d4d4d4;
+    border-radius: 6px;
+    padding: 14px 16px;
+    font-family: var(--mono);
+    font-size: 12.5px;
+    line-height: 1.6;
+    overflow-x: auto;
+    margin: 8px 0 4px;
+    white-space: pre;
+  }
+  .code-block .cmt  { color: #7fb77e; }
+  .code-inline {
+    font-family: var(--mono);
+    font-size: 12px;
+    background: var(--gray-100);
+    border: 1px solid var(--gray-300);
+    color: var(--gray-900);
+    padding: 1px 5px;
+    border-radius: 4px;
+  }
+
+  /* ── NOTICES ── */
+  .notice {
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin: 16px 0;
+    font-size: 13px;
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    line-height: 1.5;
+  }
+  .notice-icon { flex-shrink: 0; margin-top: 1px; }
+  .notice a { color: inherit; }
+  .notice.info     { background: var(--accent-pale); color: #17396f; border-left: 3px solid var(--accent); }
+  .notice.tip      { background: #eaf6f1; color: #1a6b50; border-left: 3px solid #268e6c; }
+  .notice.warning  { background: #fff4e5; color: #8a4b08; border-left: 3px solid #da7b11; }
+
+  /* ── BLOCKS GRID ── */
+  .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px; }
+  .skill-card { background: var(--gray-50); border: 1px solid var(--gray-200); border-radius: 8px; padding: 14px 16px; }
+  .skill-card-header { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+  .skill-tag {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 2px 7px;
+    border-radius: 10px;
+  }
+  .tag-js  { background: #fff8d6; color: #8a5e00; }
+  .tag-core{ background: var(--gray-100); color: var(--gray-700); }
+  .tag-poli{ background: var(--accent-pale); color: var(--accent-text); }
+  .skill-card-name { font-size: 13px; font-weight: 700; color: var(--gray-900); font-family: var(--mono); }
+  .skill-card-desc { font-size: 12px; color: var(--gray-600); line-height: 1.5; }
+
+  /* ── PIPELINE DIAGRAM ── */
+  .arch-diagram { border: 1px solid var(--gray-200); border-radius: 8px; padding: 24px; background: var(--gray-75); margin: 16px 0; }
+  .arch-row { display: flex; gap: 8px; align-items: center; justify-content: center; flex-wrap: wrap; }
+  .arch-node { padding: 8px 16px; border-radius: 6px; font-size: 12px; font-weight: 700; text-align: center; min-width: 110px; }
+  .arch-arrow { font-size: 18px; color: var(--gray-400); }
+  .node-a { background: var(--accent-pale); color: var(--accent-text); }
+  .node-b { background: #eceef0; color: var(--ink); }
+  .node-c { background: #eaf6f1; color: #1a6b50; }
+  .node-d { background: #fff4e5; color: #8a4b08; }
+
+  /* ── TABLE ── */
+  .table-scroll { overflow-x: auto; }
+  .spec-table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 12px 0; }
+  .spec-table th {
+    text-align: left;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--gray-600);
+    padding: 8px 12px;
+    border-bottom: 2px solid var(--gray-200);
+    background: var(--gray-75);
+  }
+  .spec-table td { padding: 9px 12px; border-bottom: 1px solid var(--gray-200); color: var(--gray-800); vertical-align: top; }
+  .spec-table tr:last-child td { border-bottom: none; }
+  .spec-table td:first-child { font-weight: 700; color: var(--gray-900); }
+  .spec-table td.num { font-variant-numeric: tabular-nums; white-space: nowrap; }
+
+  /* ── STAT ROW ── */
+  .stat-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin: 16px 0; }
+  .stat-card { border: 1px solid var(--gray-200); border-radius: 8px; padding: 16px; background: var(--gray-75); }
+  .stat-num { font-size: 26px; font-weight: 700; color: var(--accent); line-height: 1.1; }
+  .stat-label { font-size: 12px; color: var(--gray-600); margin-top: 4px; }
+
+  /* ── SWATCHES ── */
+  .swatch-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin: 12px 0; }
+  .swatch { border: 1px solid var(--gray-200); border-radius: 8px; overflow: hidden; font-size: 12px; }
+  .swatch-chip { height: 44px; }
+  .swatch-meta { padding: 8px 10px; }
+  .swatch-meta strong { display: block; color: var(--gray-900); }
+  .swatch-meta code { font-family: var(--mono); color: var(--gray-600); }
+
+  /* ── FOOTER ── */
+  .doc-footer {
+    border-top: 1px solid var(--gray-200);
+    margin-top: 40px;
+    padding-top: 20px;
+    font-size: 12px;
+    color: var(--gray-600);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .doc-footer a { text-decoration: none; }
+
+  /* ── STATUS PILLS ── */
+  .nav-status {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    padding: 1px 6px;
+    border-radius: 8px;
+    text-transform: uppercase;
+  }
+  .ns-progress { background: #fff4e5; color: #8a4b08; }
+  .ns-done     { background: #eaf6f1; color: #1a6b50; }
+
+  .status-badge {
+    margin-left: auto;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    padding: 3px 10px;
+    border-radius: 12px;
+    text-transform: uppercase;
+  }
+  .sb-progress { background: #fff4e5; color: #8a4b08; }
+  .sb-done     { background: #eaf6f1; color: #1a6b50; }
+
+  /* ── CHECKLIST ── */
+  .checklist { list-style: none; display: flex; flex-direction: column; gap: 10px; margin: 4px 0; }
+  .check-item {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    padding: 12px 14px;
+    border: 1px solid var(--gray-200);
+    border-radius: 8px;
+    background: var(--gray-50);
+  }
+  .check-mark {
+    width: 20px; height: 20px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1px;
+    font-size: 12px;
+    font-weight: 700;
+  }
+  .cm-done    { background: #eaf6f1; color: #268e6c; }
+  .cm-done::before { content: '✓'; }
+  .cm-partial { background: #fff4e5; color: #da7b11; }
+  .cm-partial::before { content: '–'; }
+  .cm-todo    { background: var(--gray-100); color: var(--gray-500); }
+  .cm-todo::before { content: '○'; }
+  .check-body { flex: 1; }
+  .check-title { font-weight: 700; font-size: 13px; color: var(--gray-900); }
+  .check-note  { font-size: 12px; color: var(--gray-600); line-height: 1.5; }
+
+  .req-list { margin: 8px 0 0 18px; font-size: 13px; color: var(--gray-700); }
+  .req-list li { margin-bottom: 4px; }
+
+  @media (max-width: 768px) {
+    .sidebar { display: none; }
+    .main { padding: 24px 16px 60px; }
+    .page-hero h1 { font-size: 24px; }
+    .url-grid { grid-template-columns: 1fr; }
+    .topnav-title { display: none; }
+  }
+
+/* ── ADDITIONS FOR PORTFOLIO / SITE PAGES ── */
+.topnav select { margin-left: auto; background: #2a3550; color: #fff; border: 1px solid #3c4c70; border-radius: 6px; padding: 5px 8px; font: inherit; font-size: 13px; max-width: 240px; }
+.topnav-badge { margin-left: 12px; }
+.sidebar-back { display: block; padding: 6px 20px 14px; font-size: 12px; font-weight: 700; text-decoration: none; }
+.pill { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.04em; padding: 2px 8px; border-radius: 10px; text-transform: uppercase; white-space: nowrap; }
+.pill.done { background: #eaf6f1; color: #1a6b50; }
+.pill.warn { background: #fff4e5; color: #8a4b08; }
+.pill.todo { background: var(--gray-100); color: var(--gray-700); }
+.pill.info { background: var(--accent-pale); color: var(--accent-text); }
+.spec-table td.mono, .mono { font-family: var(--mono); font-size: 12px; }
+.spec-table td a { word-break: break-word; }
+.spec-table tr.sub td { background: var(--gray-75); }
+.muted { color: var(--gray-600); }
+.small { font-size: 12px; }
+details.fold { border: 1px solid var(--gray-200); border-radius: 8px; margin: 12px 0; background: var(--gray-50); }
+details.fold > summary { cursor: pointer; padding: 10px 14px; font-weight: 700; font-size: 13px; color: var(--gray-900); }
+details.fold > .fold-body { padding: 0 14px 12px; }
+.da-table { border-collapse: collapse; margin: 10px 0; font-size: 12px; width: 100%; max-width: 640px; background: #fff; }
+.da-table th { background: #f4ecf8; color: #4a2c5e; text-align: left; padding: 6px 10px; border: 1px solid #d9cce3; font-weight: 700; font-family: var(--mono); }
+.da-table td { border: 1px solid #d9cce3; padding: 6px 10px; color: var(--gray-800); vertical-align: top; }
+.da-table td.empty { color: var(--gray-500); font-style: italic; }
+.block-card { border: 1px solid var(--gray-200); border-radius: 8px; padding: 16px 18px; margin: 14px 0; background: var(--gray-50); }
+.block-card h3 { margin-top: 0; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.block-card h3 code { font-family: var(--mono); }
+.kv { display: grid; grid-template-columns: 150px 1fr; gap: 4px 12px; font-size: 13px; margin: 8px 0; }
+.kv dt { color: var(--gray-600); font-weight: 700; }
+.kv dd { color: var(--gray-900); min-width: 0; word-break: break-word; }
+.tree { font-family: var(--mono); font-size: 12.5px; line-height: 1.7; background: var(--gray-75); border: 1px solid var(--gray-200); border-radius: 8px; padding: 14px 16px; overflow-x: auto; white-space: pre; color: var(--gray-800); }
+.timeline { list-style: none; border-left: 2px solid var(--gray-200); margin: 8px 0 8px 6px; padding-left: 18px; }
+.timeline li { margin-bottom: 10px; font-size: 13px; position: relative; }
+.timeline li::before { content: ''; position: absolute; left: -25px; top: 6px; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
+.timeline .when { color: var(--gray-600); font-size: 12px; font-family: var(--mono); margin-right: 6px; }
+.matrix td, .matrix th { text-align: center; padding: 7px 8px; }
+.matrix td:first-child, .matrix th:first-child { text-align: left; }
+.matrix .yes { color: #1a6b50; font-weight: 700; }
+.matrix .cust { color: var(--accent-text); font-weight: 700; }
+.matrix .no { color: var(--gray-400); }
+.site-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 14px; margin: 14px 0; }
+.site-card { border: 1px solid var(--gray-200); border-radius: 10px; padding: 16px 18px; text-decoration: none; color: inherit; display: flex; flex-direction: column; gap: 6px; background: #fff; transition: border-color .15s, box-shadow .15s; }
+.site-card:hover { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent); }
+.site-card h3 { margin: 0; font-size: 16px; color: var(--ink); }
+.site-card .dom { font-family: var(--mono); font-size: 12px; color: var(--accent-text); }
+.site-card .meta { font-size: 12px; color: var(--gray-700); display: flex; gap: 12px; flex-wrap: wrap; margin-top: 4px; }
+.site-card p { font-size: 13px; color: var(--gray-800); margin: 4px 0 0; line-height: 1.5; }
+.swatch-chip.bordered { border-bottom: 1px solid var(--gray-200); }
+.type-sample { border: 1px solid var(--gray-200); border-radius: 8px; padding: 10px 14px; margin: 6px 0; font-size: 13px; }
+.type-sample b { font-family: var(--mono); font-size: 12px; color: var(--gray-700); }
+.hl-list { margin: 6px 0 12px 18px; font-size: 14px; color: var(--gray-800); line-height: 1.6; }
+.hl-list li { margin-bottom: 4px; }
+.table-scroll { max-width: 100%; }
+@media (max-width: 768px) { .topnav select { max-width: 150px; } .kv { grid-template-columns: 1fr; } .topnav-badge { display: none; } }
+
+</style>
+</head>
+<body>
+<nav class="topnav">
+  <a class="topnav-logo" href="#overview"><span class="mark">R</span>Reynolds EDS</a>
+  <div class="topnav-divider"></div>
+  <span class="topnav-title">livewellatrai.com → EDS · Site handover</span>
+  <span class="topnav-badge" style="margin-left:auto">Handover</span>
+</nav>
+<div class="layout">
+<nav class="sidebar" aria-label="Page navigation">
+<div class="sidebar-section"><div class="sidebar-label">Overview</div>
+<a class="sidebar-link active" href="#overview"><svg class="icon" viewBox="0 0 16 16" fill="currentColor"><path d="M2 2h5v5H2zm7 0h5v5H9zM2 9h5v5H2zm7 0h5v5H9z"/></svg>Overview</a>
+<a class="sidebar-link" href="#use-case"><svg class="icon" viewBox="0 0 16 16" fill="currentColor"><path d="M2 2.75A.75.75 0 012.75 2h7.5l3.5 3.5v7.75a.75.75 0 01-.75.75h-10.5a.75.75 0 01-.75-.75zM3.5 3.5v9h9V6H9.5V3.5z"/></svg>Use case &amp; requirements</a>
+<a class="sidebar-link" href="#references"><svg class="icon" viewBox="0 0 16 16" fill="currentColor"><path d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95z"/></svg>Key references</a>
+<a class="sidebar-link" href="#deliverables"><svg class="icon" viewBox="0 0 16 16" fill="currentColor"><path d="M4.5 2A2.5 2.5 0 002 4.5v7A2.5 2.5 0 004.5 14h7a2.5 2.5 0 002.5-2.5v-7A2.5 2.5 0 0011.5 2zM3.5 4.5a1 1 0 011-1h7a1 1 0 011 1v7a1 1 0 01-1 1h-7a1 1 0 01-1-1z"/></svg>Deliverables</a>
+</div>
+<div class="sidebar-section"><div class="sidebar-label">DA.live content</div>
+<a class="sidebar-link" href="#pages"><svg class="icon" viewBox="0 0 16 16" fill="currentColor"><path d="M2 2.75A.75.75 0 012.75 2h7.5l3.5 3.5v7.75a.75.75 0 01-.75.75h-10.5a.75.75 0 01-.75-.75zM3.5 3.5v9h9V6H9.5V3.5z"/></svg>Pages in DA.live</a>
+<a class="sidebar-link" href="#navigation"><svg class="icon" viewBox="0 0 16 16" fill="currentColor"><path d="M8.22 2.97a.75.75 0 011.06 0l4.25 4.25a.75.75 0 010 1.06l-4.25 4.25a.75.75 0 01-1.06-1.06l2.97-2.97H3.75a.75.75 0 010-1.5h7.44L8.22 4.03a.75.75 0 010-1.06z"/></svg>Navigation &amp; links</a>
+<a class="sidebar-link" href="#header"><svg class="icon" viewBox="0 0 16 16" fill="currentColor"><path d="M0 3.75C0 2.784.784 2 1.75 2h12.5c.966 0 1.75.784 1.75 1.75v8.5A1.75 1.75 0 0114.25 14H1.75A1.75 1.75 0 010 12.25zm1.75-.25a.25.25 0 00-.25.25v8.5c0 .138.112.25.25.25h12.5a.25.25 0 00.25-.25v-8.5a.25.25 0 00-.25-.25z"/></svg>Header &amp; footer</a>
+<a class="sidebar-link" href="#blocks"><svg class="icon" viewBox="0 0 16 16" fill="currentColor"><path d="M4.5 2A2.5 2.5 0 002 4.5v7A2.5 2.5 0 004.5 14h7a2.5 2.5 0 002.5-2.5v-7A2.5 2.5 0 0011.5 2zM3.5 4.5a1 1 0 011-1h7a1 1 0 011 1v7a1 1 0 01-1 1h-7a1 1 0 01-1-1z"/></svg>Content blocks</a>
+<a class="sidebar-link" href="#brand"><svg class="icon" viewBox="0 0 16 16" fill="currentColor"><path d="M3 2.5A.5.5 0 013.5 2h9a.5.5 0 01.5.5V4a.5.5 0 01-1 0v-1H8.5v10H10a.5.5 0 010 1H6a.5.5 0 010-1h1.5V3h-3v1a.5.5 0 01-1 0z"/></svg>Brand design system</a>
+</div>
+<div class="sidebar-section"><div class="sidebar-label">GitHub</div>
+<a class="sidebar-link" href="#github"><svg class="icon" viewBox="0 0 16 16" fill="currentColor"><path d="M9.5 3.25a2.25 2.25 0 11-3 2.122v5.256a2.251 2.251 0 11-1.5 0V5.372A2.25 2.25 0 1111 3.25z"/></svg>GitHub implementation</a>
+</div>
+<div class="sidebar-section"><div class="sidebar-label">Quality</div>
+<a class="sidebar-link" href="#fidelity"><svg class="icon" viewBox="0 0 16 16" fill="currentColor"><path d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"/></svg>Parity gate &amp; results</a>
+</div>
+<div class="sidebar-section"><div class="sidebar-label">Handoff</div>
+<a class="sidebar-link" href="#decisions"><svg class="icon" viewBox="0 0 16 16" fill="currentColor"><path d="M2 2.75A.75.75 0 012.75 2h7.5l3.5 3.5v7.75a.75.75 0 01-.75.75h-10.5a.75.75 0 01-.75-.75zM3.5 3.5v9h9V6H9.5V3.5z"/></svg>Decisions &amp; assumptions</a>
+<a class="sidebar-link" href="#limitations"><svg class="icon" viewBox="0 0 16 16" fill="currentColor"><path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0114.082 15H1.918a1.75 1.75 0 01-1.543-2.575z"/></svg>Known limitations</a>
+<a class="sidebar-link" href="#next-steps"><svg class="icon" viewBox="0 0 16 16" fill="currentColor"><path d="M8.22 2.97a.75.75 0 011.06 0l4.25 4.25a.75.75 0 010 1.06l-4.25 4.25a.75.75 0 01-1.06-1.06l2.97-2.97H3.75a.75.75 0 010-1.5h7.44L8.22 4.03a.75.75 0 010-1.06z"/></svg>Next steps</a>
+</div>
+<div class="sidebar-section"><div class="sidebar-label">Reference</div>
+<a class="sidebar-link" href="#dev-notes"><svg class="icon" viewBox="0 0 16 16" fill="currentColor"><path d="M4.5 2A2.5 2.5 0 002 4.5v7A2.5 2.5 0 004.5 14h7a2.5 2.5 0 002.5-2.5v-7A2.5 2.5 0 0011.5 2zM3.5 4.5a1 1 0 011-1h7a1 1 0 011 1v7a1 1 0 01-1 1h-7a1 1 0 01-1-1z"/></svg>Developer notes</a>
+</div>
+</nav>
+<main class="main"><div class="main-inner">
+<div class="page-hero" id="overview">
+<div class="page-hero-eyebrow">Site handover · livewellatrai.com</div>
+<h1>Live Well at RAI on Edge Delivery Services</h1>
+<p class="page-hero-sub">Home page rebuilt with a family of purpose-built blocks (hero-split, hero-cta, columns-promo, cards-steps, notice-bar) plus header and footer; merged via PRs #1 and #2.</p>
+<p style="margin-top:14px"><span class="pill warn">Migrated · pending QA</span> <span class="muted small">&nbsp;Tracker status: Migrated - pending QA</span></p>
+<div class="stat-row"><div class="stat-card"><div class="stat-num">1</div><div class="stat-label">DA pages (excl. nav/footer)</div></div><div class="stat-card"><div class="stat-num">13</div><div class="stat-label">Blocks in repo</div></div><div class="stat-card"><div class="stat-num">9</div><div class="stat-label">Blocks changed or added</div></div><div class="stat-card"><div class="stat-num">5</div><div class="stat-label">Block variants authored</div></div><div class="stat-card"><div class="stat-num">2/2</div><div class="stat-label">PRs merged / total</div></div><div class="stat-card"><div class="stat-num">10</div><div class="stat-label">Commits on main</div></div></div>
+</div><section class="doc-section" id="use-case">
+<h2><span class="section-icon icon-purple"><svg class="icon" viewBox="0 0 16 16" fill="currentColor"><path d="M2 2.75A.75.75 0 012.75 2h7.5l3.5 3.5v7.75a.75.75 0 01-.75.75h-10.5a.75.75 0 01-.75-.75zM3.5 3.5v9h9V6H9.5V3.5z"/></svg></span>Use case &amp; requirements</h2>
+<div class="section-rule"></div>
+<div class="table-scroll"><table class="spec-table"><thead><tr><th>Area</th><th>What is built</th></tr></thead><tbody><tr><td>Scope</td><td>Home page (6 sections) with nav and footer fragments. Source: https://www.livewellatrai.com/.</td></tr><tr><td>Content</td><td>Open Enrollment promo, LSA spotlight with step cards, vendor contacts list, benefit-guide navigation covers (2026, 2027, voluntary insurance).</td></tr><tr><td>Navigation</td><td>Header with a Benefit Guides dropdown.</td></tr></tbody></table></div><h3>What stands out in this build</h3><ul class="hl-list"><li>Six site-specific content blocks: hero-split (variant media-first), hero-cta (variant no-image), columns-promo (oe), cards-steps (lsa), cards (contacts) and notice-bar, plus a custom header.</li><li>Each block&#x27;s JS header documents the source element it mirrors (e.g. columns-promo = source #oe .oe-box).</li><li>Images in DA under /media (SVG icons, photos, guide covers).</li></ul>
+</section><section class="doc-section" id="references">
+<h2><span class="section-icon icon-blue"><svg class="icon" viewBox="0 0 16 16" fill="currentColor"><path d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95z"/></svg></span>Key references</h2>
+<div class="section-rule"></div>
+<div class="url-grid"><a class="url-card" href="https://main--livewellatrai--adobedrago.aem.page/" target="_blank" rel="noopener">
+<span class="url-card-label"><span class="dot dot-purple"></span>Preview</span>
+<span class="url-card-title">main preview (.aem.page)</span>
+<span class="url-card-url">https://main--livewellatrai--adobedrago.aem.page/</span>
+<span class="url-card-desc">Branch main, content previewed from DA</span>
+</a><a class="url-card" href="https://main--livewellatrai--adobedrago.aem.live/" target="_blank" rel="noopener">
+<span class="url-card-label"><span class="dot dot-green"></span>Live</span>
+<span class="url-card-title">main live (.aem.live)</span>
+<span class="url-card-url">https://main--livewellatrai--adobedrago.aem.live/</span>
+<span class="url-card-desc">Published content only</span>
+</a><a class="url-card" href="https://da.live/#/adobedrago/livewellatrai" target="_blank" rel="noopener">
+<span class="url-card-label"><span class="dot dot-ink"></span>Authoring</span>
+<span class="url-card-title">Document Authoring (DA.live)</span>
+<span class="url-card-url">https://da.live/#/adobedrago/livewellatrai</span>
+<span class="url-card-desc">Org adobedrago, site livewellatrai</span>
+</a><a class="url-card" href="https://github.com/AdobeDrago/livewellatrai" target="_blank" rel="noopener">
+<span class="url-card-label"><span class="dot dot-ink"></span>Code</span>
+<span class="url-card-title">GitHub · AdobeDrago/livewellatrai</span>
+<span class="url-card-url">https://github.com/AdobeDrago/livewellatrai</span>
+<span class="url-card-desc">Code, blocks, styles, import-work ledger</span>
+</a><a class="url-card" href="https://livewellatrai.com/" target="_blank" rel="noopener">
+<span class="url-card-label"><span class="dot dot-orange"></span>Production</span>
+<span class="url-card-title">livewellatrai.com</span>
+<span class="url-card-url">https://livewellatrai.com/</span>
+<span class="url-card-desc">Source site that is being migrated</span>
+</a></div><p class="small muted">HTTP status observed when this page was generated: preview <strong>200</strong>, preview /nav <strong>200</strong>, preview /footer <strong>200</strong>, live <strong>404</strong>, live /nav <strong>404</strong>.</p>
+</section><section class="doc-section" id="deliverables">
+<h2><span class="section-icon icon-seafoam"><svg class="icon" viewBox="0 0 16 16" fill="currentColor"><path d="M4.5 2A2.5 2.5 0 002 4.5v7A2.5 2.5 0 004.5 14h7a2.5 2.5 0 002.5-2.5v-7A2.5 2.5 0 0011.5 2zM3.5 4.5a1 1 0 011-1h7a1 1 0 011 1v7a1 1 0 01-1 1h-7a1 1 0 01-1-1z"/></svg></span>Deliverables</h2>
+<div class="section-rule"></div>
+<ul class="checklist"><li class="check-item"><span class="check-mark cm-done"></span><div class="check-body"><div class="check-title">Repository from aem-boilerplate</div><div class="check-note">AdobeDrago/livewellatrai with 10 commits on main; branches: livewellatrai-home-parity, main, migrate-livewellatrai.</div></div></li><li class="check-item"><span class="check-mark cm-done"></span><div class="check-body"><div class="check-title">Brand setup applied</div><div class="check-note">Fonts, logo, favicon, head.html and styles.css tokens committed.</div></div></li><li class="check-item"><span class="check-mark cm-done"></span><div class="check-body"><div class="check-title">Header and footer fragments in DA</div><div class="check-note">/nav and /footer exist in DA.</div></div></li><li class="check-item"><span class="check-mark cm-done"></span><div class="check-body"><div class="check-title">Home page authored in DA</div><div class="check-note">index.html: 6 sections, 6 content block(s), 8 image(s).</div></div></li><li class="check-item"><span class="check-mark cm-partial"></span><div class="check-body"><div class="check-title">Inner pages in DA</div><div class="check-note">Home only.</div></div></li><li class="check-item"><span class="check-mark cm-done"></span><div class="check-body"><div class="check-title">Site-specific block code</div><div class="check-note">9 blocks added or changed vs. the boilerplate.</div></div></li><li class="check-item"><span class="check-mark cm-done"></span><div class="check-body"><div class="check-title">Pull requests merged</div><div class="check-note">2 of 2 merged.</div></div></li><li class="check-item"><span class="check-mark cm-done"></span><div class="check-body"><div class="check-title">Parity ledger committed</div><div class="check-note">import-work/ledger.md is in the repo.</div></div></li><li class="check-item"><span class="check-mark cm-todo"></span><div class="check-body"><div class="check-title">Published to .aem.live</div><div class="check-note">Live returns 404: content is previewed but not yet published.</div></div></li><li class="check-item"><span class="check-mark cm-partial"></span><div class="check-body"><div class="check-title">QA sign-off</div><div class="check-note">Tracker status: Migrated - pending QA.</div></div></li></ul>
+</section><section class="doc-section" id="pages">
+<h2><span class="section-icon icon-purple"><svg class="icon" viewBox="0 0 16 16" fill="currentColor"><path d="M2 2.75A.75.75 0 012.75 2h7.5l3.5 3.5v7.75a.75.75 0 01-.75.75h-10.5a.75.75 0 01-.75-.75zM3.5 3.5v9h9V6H9.5V3.5z"/></svg></span>Pages in DA.live</h2>
+<div class="section-rule"></div>
+<p>DA.live holds <strong>1</strong> content document plus the <code class="code-inline">/nav</code> and <code class="code-inline">/footer</code> fragments, read via the DA admin list and source APIs. Block names in the table are the class strings of the authored tables.</p><div class="table-scroll"><table class="spec-table"><thead><tr><th>Path (preview link)</th><th>Heading</th><th>Blocks authored</th><th>Sections</th><th>Images</th><th>Modified</th></tr></thead><tbody><tr><td><a href="https://main--livewellatrai--adobedrago.aem.page/" target="_blank" rel="noopener">/</a></td><td>Shape your future today.</td><td>hero-split ×2, columns-promo oe, cards-steps lsa, cards contacts, hero-cta</td><td>6</td><td>8</td><td>2026-11-13</td></tr></tbody></table></div><h3>DA content tree</h3><div class="tree">da.live/#/adobedrago/livewellatrai
+├── footer.html
+├── index.html
+├── nav.html
+├── images/
+│   ├── color-bar.svg
+│   ├── logo.svg
+│   ├── nav-guide-2026.jpg
+│   ├── nav-guide-2027.jpg
+│   ├── nav-guide-voluntary-insurance.jpg
+│   ├── nav-icon-arrow-white.svg
+│   ├── reynolds-logo.png
+└── media/   (15 files)
+    ├── (root)  [15]</div>
+</section><section class="doc-section" id="navigation">
+<h2><span class="section-icon icon-blue"><svg class="icon" viewBox="0 0 16 16" fill="currentColor"><path d="M8.22 2.97a.75.75 0 011.06 0l4.25 4.25a.75.75 0 010 1.06l-4.25 4.25a.75.75 0 01-1.06-1.06l2.97-2.97H3.75a.75.75 0 010-1.5h7.44L8.22 4.03a.75.75 0 010-1.06z"/></svg></span>Navigation &amp; links</h2>
+<div class="section-rule"></div>
+<p>Links were read from the authored <code class="code-inline">/nav</code> and <code class="code-inline">/footer</code> documents in DA. An internal link counts as <em>built</em> when a matching document exists in DA; otherwise it still points at a path that has not been migrated.</p><div class="table-scroll"><table class="spec-table"><thead><tr><th>Fragment</th><th>Links</th><th>Built in DA</th><th>Not yet migrated</th><th>External</th></tr></thead><tbody><tr><td>/nav</td><td class="num">8</td><td class="num">1</td><td class="num">3</td><td class="num">1</td></tr><tr><td>/footer</td><td class="num">2</td><td class="num">0</td><td class="num">0</td><td class="num">2</td></tr></tbody></table></div><details class="fold"><summary>3 internal paths that have no DA document yet</summary><div class="fold-body"><ul class="hl-list"><li><code class="code-inline">https://www.livewellatrai.com/wp-content/uploads/REYNOLDS-2027-OE-Guide-WEB-final.pdf</code></li><li><code class="code-inline">https://www.livewellatrai.com/wp-content/uploads/REYNOLDS-2027-Vol-Insurance-final.pdf</code></li><li><code class="code-inline">https://www.livewellatrai.com/wp-content/uploads/Reynolds-2026-OE-Guide-WEB-final.pdf</code></li></ul></div></details><details class="fold"><summary>Link labels authored in /nav (8)</summary><div class="fold-body small">2027 Benefits Guide · 2026 Benefits Guide · Voluntary Insurance Options · LSA Spotlight · New Hires · Contacts · Enroll now!</div></details>
+</section><section class="doc-section" id="header">
+<h2><span class="section-icon icon-ink"><svg class="icon" viewBox="0 0 16 16" fill="currentColor"><path d="M0 3.75C0 2.784.784 2 1.75 2h12.5c.966 0 1.75.784 1.75 1.75v8.5A1.75 1.75 0 0114.25 14H1.75A1.75 1.75 0 010 12.25zm1.75-.25a.25.25 0 00-.25.25v8.5c0 .138.112.25.25.25h12.5a.25.25 0 00.25-.25v-8.5a.25.25 0 00-.25-.25z"/></svg></span>Header &amp; footer</h2>
+<div class="section-rule"></div>
+<dl class="kv"><dt>Header block</dt><dd><a href="https://github.com/AdobeDrago/livewellatrai/blob/main/blocks/header/header.js" target="_blank" rel="noopener">blocks/header/header.js</a> (10.1 KB) and <a href="https://github.com/AdobeDrago/livewellatrai/blob/main/blocks/header/header.css" target="_blank" rel="noopener">header.css</a> (8.8 KB)</dd><dt>Content source</dt><dd>DA document <code class="code-inline">/nav</code> loaded as a fragment (present).</dd><dt>Footer block</dt><dd><a href="https://github.com/AdobeDrago/livewellatrai/blob/main/blocks/footer/footer.js" target="_blank" rel="noopener">blocks/footer/footer.js</a> (3.8 KB) and <a href="https://github.com/AdobeDrago/livewellatrai/blob/main/blocks/footer/footer.css" target="_blank" rel="noopener">footer.css</a> (1.9 KB)</dd><dt>Content source</dt><dd>DA document <code class="code-inline">/footer</code> (present).</dd></dl><p class="small muted">/nav: 3 sections, 8 links, 5 images. /footer: 2 sections, 2 links.</p><div class="notice info"><span class="notice-icon">ℹ</span><div>Both fragments are authored in DA as plain sections (no block tables). Section order inside the document drives the header and footer layout, so edit them in DA and re-preview <code class="code-inline">/nav</code> and <code class="code-inline">/footer</code> after any change.</div></div><p class="small">Header CSS variants: <code class="code-inline">block</code></p>
+</section><section class="doc-section" id="blocks">
+<h2><span class="section-icon icon-orange"><svg class="icon" viewBox="0 0 16 16" fill="currentColor"><path d="M4.5 2A2.5 2.5 0 002 4.5v7A2.5 2.5 0 004.5 14h7a2.5 2.5 0 002.5-2.5v-7A2.5 2.5 0 0011.5 2zM3.5 4.5a1 1 0 011-1h7a1 1 0 011 1v7a1 1 0 01-1 1h-7a1 1 0 01-1-1z"/></svg></span>Content blocks (DA authoring reference)</h2>
+<div class="section-rule"></div>
+<p>These are the <strong>content blocks authored in DA.live</strong> for this site. Each card shows the table an author builds in DA (first row = block name and variants, following rows = cells) taken from a live document, and where the implementation lives in GitHub.</p><p>Section styles used through a <code class="code-inline">section-metadata</code> block (<em>Style</em> row): <code class="code-inline">contacts</code>, <code class="code-inline">enroll</code>, <code class="code-inline">navy</code>.</p><div class="block-card">
+<h3><code>hero-split</code> <span class="skill-tag tag-js">Custom / modified</span></h3>
+<p>Hero split: text (heading, body, CTA) beside an image. Authored as one row with a text cell and an image cell (either order); extra rows or cells are folded into the matching side.</p>
+<table class="da-table"><tr><th colspan="2">hero-split</th></tr><tr><td>Shape your future today. At Reynolds, our benefits are there when you</td><td class="empty">(image / empty)</td></tr></table>
+<dl class="kv">
+<dt>Authored on</dt><dd>2 block instances across 1 page: <code class="code-inline">/</code></dd>
+<dt>Implementation</dt><dd><a href="https://github.com/AdobeDrago/livewellatrai/blob/main/blocks/hero-split/hero-split.js" target="_blank" rel="noopener">blocks/hero-split/hero-split.js</a> (2.9 KB) · <a href="https://github.com/AdobeDrago/livewellatrai/blob/main/blocks/hero-split/hero-split.css" target="_blank" rel="noopener">hero-split.css</a> (4.8 KB)</dd>
+<dt>CSS variants</dt><dd><code class="code-inline">media-first</code></dd>
+</dl>
+</div><div class="block-card">
+<h3><code>columns-promo oe</code> <span class="skill-tag tag-js">Custom / modified</span></h3>
+<p>Columns promo: the Open Enrollment box (source #oe .oe-box). Rows with one cell are the intro (heading + lead); a row with several cells becomes the step list, one item per cell: heading, text and an underlined arrow link.</p>
+<table class="da-table"><tr><th colspan="2">columns-promo oe</th></tr><tr><td>Enrolling in Benefits The annual Open Enrollment period for 2027 benef</td><td></td></tr><tr><td>Experiencing a life change? If you experience a qualifying life event</td><td>New to Reynolds or rejoining the team? You have 61 days from your hire</td></tr></table>
+<dl class="kv">
+<dt>Authored on</dt><dd>1 block instance across 1 page: <code class="code-inline">/</code></dd>
+<dt>Implementation</dt><dd><a href="https://github.com/AdobeDrago/livewellatrai/blob/main/blocks/columns-promo/columns-promo.js" target="_blank" rel="noopener">blocks/columns-promo/columns-promo.js</a> (1.4 KB) · <a href="https://github.com/AdobeDrago/livewellatrai/blob/main/blocks/columns-promo/columns-promo.css" target="_blank" rel="noopener">columns-promo.css</a> (1.9 KB)</dd>
+<dt>CSS variants</dt><dd><span class="muted">none declared</span></dd>
+</dl>
+</div><div class="block-card">
+<h3><code>cards-steps lsa</code> <span class="skill-tag tag-js">Custom / modified</span></h3>
+<p>Cards steps: the LSA spotlight panel (source #lsa-spotlight .card-container). Rows: first = [logo][heading + lead]; middle = one step card each ([icon][title + text]); a last row holding only a link becomes the full-width notice button.</p>
+<table class="da-table"><tr><th colspan="2">cards-steps lsa</th></tr><tr><td class="empty">(image / empty)</td><td>Get your $500 Don’t leave your 2026 LSA money behind. Submit receipts</td></tr><tr><td class="empty">(image / empty)</td><td>Make a purchase Choose your happy by making an eligible purchase relat</td></tr><tr><td class="empty">(image / empty)</td><td>Submit receipts Use the Forma app or website to submit receipts of eli</td></tr><tr><td class="empty">(image / empty)</td><td>Get reimbursed Approved expenses are reimbursed through payroll — with</td></tr><tr><td>Learn more on Employee Central .</td><td></td></tr></table>
+<dl class="kv">
+<dt>Authored on</dt><dd>1 block instance across 1 page: <code class="code-inline">/</code></dd>
+<dt>Implementation</dt><dd><a href="https://github.com/AdobeDrago/livewellatrai/blob/main/blocks/cards-steps/cards-steps.js" target="_blank" rel="noopener">blocks/cards-steps/cards-steps.js</a> (2.4 KB) · <a href="https://github.com/AdobeDrago/livewellatrai/blob/main/blocks/cards-steps/cards-steps.css" target="_blank" rel="noopener">cards-steps.css</a> (2.1 KB)</dd>
+<dt>CSS variants</dt><dd><span class="muted">none declared</span></dd>
+</dl>
+</div><div class="block-card">
+<h3><code>cards contacts</code> <span class="skill-tag tag-js">Custom / modified</span></h3>
+<p>contacts variant: a first row holding only plain text is the toggle label. The list (and the rest of the section after it) stays collapsed until the button is pressed, as on the source.</p>
+<table class="da-table"><tr><th colspan="1">cards contacts</th></tr><tr><td>See all contacts</td></tr><tr><td>Alight Benefits enrollment, Total Rewards Statement RAIBenefits.com |</td></tr><tr><td>Blue Cross Blue Shield (BCBS) Medical and dental insurance BlueCrossNC</td></tr><tr><td>Exos LiveWell Fitness Centers, wellness app, physical therapy teamexos</td></tr><tr><td>Express Scripts (ESI) Prescription drugs, home delivery program expres</td></tr><tr><td>Farmers Insurance Auto, Renters’ &amp; Home Insurance farmers.com/groupsel</td></tr><tr><td colspan="1" class="empty">… 14 more rows</td></tr></table>
+<dl class="kv">
+<dt>Authored on</dt><dd>1 block instance across 1 page: <code class="code-inline">/</code></dd>
+<dt>Implementation</dt><dd><a href="https://github.com/AdobeDrago/livewellatrai/blob/main/blocks/cards/cards.js" target="_blank" rel="noopener">blocks/cards/cards.js</a> (2.1 KB) · <a href="https://github.com/AdobeDrago/livewellatrai/blob/main/blocks/cards/cards.css" target="_blank" rel="noopener">cards.css</a> (1.6 KB)</dd>
+<dt>CSS variants</dt><dd><span class="muted">none declared</span></dd>
+</dl>
+</div><div class="block-card">
+<h3><code>hero-cta</code> <span class="skill-tag tag-js">Custom / modified</span></h3>
+<p>Hero CTA: full-width background photo with centered heading, text and a CTA button. Authored as a background image (row or cell) plus a content cell. Missing image falls back to a plain hero (no-image).</p>
+<table class="da-table"><tr><th colspan="1">hero-cta</th></tr><tr><td class="empty">(image / empty)</td></tr><tr><td>RAIBenefits.com Compare medical plans and costs, enroll in benefits, c</td></tr></table>
+<dl class="kv">
+<dt>Authored on</dt><dd>1 block instance across 1 page: <code class="code-inline">/</code></dd>
+<dt>Implementation</dt><dd><a href="https://github.com/AdobeDrago/livewellatrai/blob/main/blocks/hero-cta/hero-cta.js" target="_blank" rel="noopener">blocks/hero-cta/hero-cta.js</a> (2.2 KB) · <a href="https://github.com/AdobeDrago/livewellatrai/blob/main/blocks/hero-cta/hero-cta.css" target="_blank" rel="noopener">hero-cta.css</a> (2.2 KB)</dd>
+<dt>CSS variants</dt><dd><code class="code-inline">no-image</code></dd>
+</dl>
+</div><h3>Blocks in the repo that no authored page uses yet</h3><div class="table-scroll"><table class="spec-table"><thead><tr><th>Block</th><th>JS</th><th>CSS</th><th>Status</th></tr></thead><tbody><tr><td><a href="https://github.com/AdobeDrago/livewellatrai/tree/main/blocks/columns" target="_blank" rel="noopener">columns</a></td><td>568 B</td><td>425 B</td><td>Boilerplate, unchanged</td></tr><tr><td><a href="https://github.com/AdobeDrago/livewellatrai/tree/main/blocks/footer" target="_blank" rel="noopener">footer</a></td><td>3.8 KB</td><td>1.9 KB</td><td>Header/footer/fragment: loaded by the page shell</td></tr><tr><td><a href="https://github.com/AdobeDrago/livewellatrai/tree/main/blocks/fragment" target="_blank" rel="noopener">fragment</a></td><td>1.9 KB</td><td>40 B</td><td>Header/footer/fragment: loaded by the page shell</td></tr><tr><td><a href="https://github.com/AdobeDrago/livewellatrai/tree/main/blocks/header" target="_blank" rel="noopener">header</a></td><td>10.1 KB</td><td>8.8 KB</td><td>Header/footer/fragment: loaded by the page shell</td></tr><tr><td><a href="https://github.com/AdobeDrago/livewellatrai/tree/main/blocks/hero" target="_blank" rel="noopener">hero</a></td><td>0 B</td><td>504 B</td><td>Boilerplate, unchanged</td></tr><tr><td><a href="https://github.com/AdobeDrago/livewellatrai/tree/main/blocks/notice-bar" target="_blank" rel="noopener">notice-bar</a></td><td>1.1 KB</td><td>869 B</td><td>Customised, used by fragments or reserved</td></tr><tr><td><a href="https://github.com/AdobeDrago/livewellatrai/tree/main/blocks/section-metadata" target="_blank" rel="noopener">section-metadata</a></td><td>1.1 KB</td><td>39 B</td><td>Customised, used by fragments or reserved</td></tr><tr><td><a href="https://github.com/AdobeDrago/livewellatrai/tree/main/blocks/widget" target="_blank" rel="noopener">widget</a></td><td>2.9 KB</td><td>30 B</td><td>Boilerplate, unchanged</td></tr></tbody></table></div>
+</section><section class="doc-section" id="brand">
+<h2><span class="section-icon icon-green"><svg class="icon" viewBox="0 0 16 16" fill="currentColor"><path d="M3 2.5A.5.5 0 013.5 2h9a.5.5 0 01.5.5V4a.5.5 0 01-1 0v-1H8.5v10H10a.5.5 0 010 1H6a.5.5 0 010-1h1.5V3h-3v1a.5.5 0 01-1 0z"/></svg></span>Brand design system</h2>
+<div class="section-rule"></div>
+<p>Tokens are read from <a href="https://github.com/AdobeDrago/livewellatrai/blob/main/styles/styles.css" target="_blank" rel="noopener">styles/styles.css</a> (the <code class="code-inline">:root</code> block).</p><h3>Colour tokens</h3><div class="swatch-row"><div class="swatch"><div class="swatch-chip bordered" style="background:#0e2b63"></div><div class="swatch-meta"><strong>dark-blue</strong><code>#0e2b63</code></div></div><div class="swatch"><div class="swatch-chip bordered" style="background:#004f9f"></div><div class="swatch-meta"><strong>mid-blue</strong><code>#004f9f</code></div></div><div class="swatch"><div class="swatch-chip bordered" style="background:#00b1eb"></div><div class="swatch-meta"><strong>light-blue</strong><code>#00b1eb</code></div></div><div class="swatch"><div class="swatch-chip bordered" style="background:#e5e5e5"></div><div class="swatch-meta"><strong>light-grey</strong><code>#e5e5e5</code></div></div><div class="swatch"><div class="swatch-chip bordered" style="background:#7e7d7d"></div><div class="swatch-meta"><strong>dark-grey</strong><code>#7e7d7d</code></div></div><div class="swatch"><div class="swatch-chip bordered" style="background:#5a328a"></div><div class="swatch-meta"><strong>dark-purple</strong><code>#5a328a</code></div></div><div class="swatch"><div class="swatch-chip bordered" style="background:#ef7d00"></div><div class="swatch-meta"><strong>dark-orange</strong><code>#ef7d00</code></div></div><div class="swatch"><div class="swatch-chip bordered" style="background:#fb0"></div><div class="swatch-meta"><strong>light-orange</strong><code>#fb0</code></div></div><div class="swatch"><div class="swatch-chip bordered" style="background:#50af47"></div><div class="swatch-meta"><strong>main-green</strong><code>#50af47</code></div></div><div class="swatch"><div class="swatch-chip bordered" style="background:#80bc29"></div><div class="swatch-meta"><strong>mid-green</strong><code>#80bc29</code></div></div><div class="swatch"><div class="swatch-chip bordered" style="background:#afca0b"></div><div class="swatch-meta"><strong>light-green</strong><code>#afca0b</code></div></div><div class="swatch"><div class="swatch-chip bordered" style="background:#fff"></div><div class="swatch-meta"><strong>white</strong><code>#fff</code></div></div><div class="swatch"><div class="swatch-chip bordered" style="background:#fcfffc"></div><div class="swatch-meta"><strong>background-color</strong><code>#fcfffc</code></div></div><div class="swatch"><div class="swatch-chip bordered" style="background:#1c3144"></div><div class="swatch-meta"><strong>text-color</strong><code>#1c3144</code></div></div></div><h3>Font families</h3><div class="type-sample"><b>--body-font-family</b><br>Aeroport, sans-serif</div><div class="type-sample"><b>--heading-font-family</b><br>Aeroport, sans-serif</div><h3>Type scale</h3><div class="table-scroll"><table class="spec-table"><thead><tr><th>Token</th><th>Value</th></tr></thead><tbody><tr><td><code class="code-inline">--body-font-size-m</code></td><td>20px</td></tr><tr><td><code class="code-inline">--body-font-size-s</code></td><td>17.6px</td></tr><tr><td><code class="code-inline">--body-font-size-xs</code></td><td>16px</td></tr><tr><td><code class="code-inline">--heading-font-size-xxl</code></td><td>40px</td></tr><tr><td><code class="code-inline">--heading-font-size-xl</code></td><td>32px</td></tr><tr><td><code class="code-inline">--heading-font-size-l</code></td><td>20px</td></tr><tr><td><code class="code-inline">--heading-font-size-m</code></td><td>20px</td></tr><tr><td><code class="code-inline">--heading-font-size-s</code></td><td>18px</td></tr><tr><td><code class="code-inline">--heading-font-size-xs</code></td><td>16px</td></tr></tbody></table></div><h3>Layout tokens</h3><div class="table-scroll"><table class="spec-table"><thead><tr><th>Token</th><th>Value</th></tr></thead><tbody><tr><td><code class="code-inline">--nav-height</code></td><td>104px</td></tr></tbody></table></div><h3>Brand assets committed to GitHub</h3><div class="table-scroll"><table class="spec-table"><thead><tr><th>Where</th><th>Files</th></tr></thead><tbody><tr><td>Icons in /icons</td><td>arrow-right.svg, logo.svg, search.svg</td></tr></tbody></table></div>
+</section><section class="doc-section" id="github">
+<h2><span class="section-icon icon-ink"><svg class="icon" viewBox="0 0 16 16" fill="currentColor"><path d="M9.5 3.25a2.25 2.25 0 11-3 2.122v5.256a2.251 2.251 0 11-1.5 0V5.372A2.25 2.25 0 1111 3.25z"/></svg></span>GitHub implementation</h2>
+<div class="section-rule"></div>
+<h3>Repository</h3><dl class="kv"><dt>Repo</dt><dd><a href="https://github.com/AdobeDrago/livewellatrai" target="_blank" rel="noopener">AdobeDrago/livewellatrai</a></dd><dt>Branches</dt><dd><code class="code-inline">livewellatrai-home-parity</code>, <code class="code-inline">main</code>, <code class="code-inline">migrate-livewellatrai</code></dd><dt>Base commit</dt><dd><code class="code-inline">02d3e18</code> "chore: cleanup repository template"; everything after it is site work.</dd></dl><h3>Pull requests</h3><div class="table-scroll"><table class="spec-table"><thead><tr><th>#</th><th>Title</th><th>Branch</th><th>State</th></tr></thead><tbody><tr><td><a href="https://github.com/AdobeDrago/livewellatrai/pull/1" target="_blank" rel="noopener">#1</a></td><td>Migrate livewellatrai.com homepage, header, footer and design</td><td><code class="code-inline">migrate-livewellatrai</code></td><td><span class="pill done">merged</span></td></tr><tr><td><a href="https://github.com/AdobeDrago/livewellatrai/pull/2" target="_blank" rel="noopener">#2</a></td><td>Rebuild the livewellatrai.com home page at visual parity</td><td><code class="code-inline">livewellatrai-home-parity</code></td><td><span class="pill done">merged</span></td></tr></tbody></table></div><h3>Commit history (main)</h3><ul class="timeline"><li><span class="when">2026-11-13</span><a href="https://github.com/AdobeDrago/livewellatrai/commit/d1a08c2" target="_blank" rel="noopener">d1a08c2</a> Merge pull request #2 from AdobeDrago/livewellatrai-home-parity</li><li><span class="when">2026-11-13</span><a href="https://github.com/AdobeDrago/livewellatrai/commit/feac197" target="_blank" rel="noopener">feac197</a> Ledger: publish and branch-preview gate results</li><li><span class="when">2026-11-13</span><a href="https://github.com/AdobeDrago/livewellatrai/commit/f9be91c" target="_blank" rel="noopener">f9be91c</a> Keep the RAI benefits section flush with the footer on the DA preview</li><li><span class="when">2026-11-13</span><a href="https://github.com/AdobeDrago/livewellatrai/commit/0fd5d63" target="_blank" rel="noopener">0fd5d63</a> Hide the empty metadata section served by DA</li><li><span class="when">2026-11-13</span><a href="https://github.com/AdobeDrago/livewellatrai/commit/626aee1" target="_blank" rel="noopener">626aee1</a> Home page parity with livewellatrai.com (header, hero, enroll, new hires, contacts, RAI benefits, footer)</li><li><span class="when">2026-11-13</span><a href="https://github.com/AdobeDrago/livewellatrai/commit/c9fcfcc" target="_blank" rel="noopener">c9fcfcc</a> Merge pull request #1 from AdobeDrago/migrate-livewellatrai</li><li><span class="when">2026-11-13</span><a href="https://github.com/AdobeDrago/livewellatrai/commit/ca48b5c" target="_blank" rel="noopener">ca48b5c</a> Migrate livewellatrai.com homepage, header, footer and design</li><li><span class="when">2026-11-12</span><a href="https://github.com/AdobeDrago/livewellatrai/commit/564b3b3" target="_blank" rel="noopener">564b3b3</a> Apply brand setup from source site</li><li><span class="when">2026-11-12</span><a href="https://github.com/AdobeDrago/livewellatrai/commit/02d3e18" target="_blank" rel="noopener">02d3e18</a> chore: cleanup repository template</li><li><span class="when">2026-11-12</span><a href="https://github.com/AdobeDrago/livewellatrai/commit/9d30c6b" target="_blank" rel="noopener">9d30c6b</a> Initial commit</li></ul><h3>What differs from the boilerplate</h3><p>76 files outside <code class="code-inline">import-work/</code> were added or changed after the base commit.</p><div class="table-scroll"><table class="spec-table"><thead><tr><th>Area</th><th>Files</th><th>Changed files</th></tr></thead><tbody><tr><td><code class="code-inline">(root)</code></td><td>5</td><td>.gitignore, .hlxignore, favicon.ico, favicon.svg, head.html</td></tr><tr><td><code class="code-inline">.migration</code></td><td>1</td><td>project.json</td></tr><tr><td><code class="code-inline">blocks</code></td><td>28</td><td>README.md, cards-steps.css, cards-steps.js, metadata.json, cards.css, cards.js, README.md, columns-promo.css …</td></tr><tr><td><code class="code-inline">catalog</code></td><td>21</td><td>metadata.json, metadata.json, metadata.json, metadata.json, metadata.json, metadata.json, 00d09079e278.jpg, 21131bc56ddd.jpg …</td></tr><tr><td><code class="code-inline">fonts</code></td><td>4</td><td>roboto-bold.woff2, roboto-condensed-bold.woff2, roboto-medium.woff2, roboto-regular.woff2</td></tr><tr><td><code class="code-inline">icons</code></td><td>2</td><td>arrow-right.svg, logo.svg</td></tr><tr><td><code class="code-inline">styles</code></td><td>4</td><td>brand.css, fonts.css, background-lozenge.png, styles.css</td></tr><tr><td><code class="code-inline">tools</code></td><td>11</td><td>import-homepage.js, page-templates.json, cards-steps.js, cards.js, columns-promo.js, hero-cta.js, hero-split.js, notice-bar.js …</td></tr></tbody></table></div><p><strong>scripts/scripts.js</strong> is unchanged from the boilerplate.</p><h3>import-work/ (migration tooling committed to the repo)</h3><p>37 files: page section sources under <code class="code-inline">pages/</code>, the DA-ready documents under <code class="code-inline">da/</code>, gate configs under <code class="code-inline">gate/</code>, <code class="code-inline">pages.json</code>, <code class="code-inline">site.json</code> and <code class="code-inline">ledger.md</code>. Open it in <a href="https://github.com/AdobeDrago/livewellatrai/tree/main/import-work" target="_blank" rel="noopener">GitHub</a>.</p><h3>Source URL map (import-work/pages.json)</h3><div class="table-scroll"><table class="spec-table"><thead><tr><th>Page key</th><th>Source URL</th></tr></thead><tbody><tr><td><code class="code-inline">home</code></td><td><a href="https://www.livewellatrai.com/" target="_blank" rel="noopener">https://www.livewellatrai.com/</a></td></tr></tbody></table></div>
+</section><section class="doc-section" id="fidelity">
+<h2><span class="section-icon icon-green"><svg class="icon" viewBox="0 0 16 16" fill="currentColor"><path d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"/></svg></span>Parity gate &amp; results</h2>
+<div class="section-rule"></div>
+<div class="table-scroll"><table class="spec-table"><thead><tr><th>Check</th><th>Result</th></tr></thead><tbody><tr><td>Local gate</td><td>12/14 sections pass; all sections at 0 computed-style mismatches. Footer fails the pixel bar at 98.79% (1440) and 98.9% (1280)</td></tr><tr><td>Section offsets</td><td>14/14 local and on preview</td></tr><tr><td>Branch preview</td><td>4/14 — every failure except the footer&#x27;s pixel score is image-name pairing; pixels 100% for those sections</td></tr><tr><td>Lint</td><td>npm run lint clean</td></tr></tbody></table></div><p class="small muted">The parity gate compares each section of the rebuild with the source at 1440 and 1280 px: pass = ≥99% pixel match and 0 computed-style mismatches. Figures above are quoted from the repo's own ledger and gate files.</p><details class="fold"><summary>Full parity ledger (import-work/ledger.md)</summary><div class="fold-body"><p>Baseline at plan approval: context 105.9k tokens; account extra-usage spend $341.91 (from <code class="code-inline">get_usage</code>). The spend meter is account-wide, so other sessions running at the same time may be included in the deltas. Gate: ≥99% pixel and 0 computed-style mismatches per section at 1440 and 1280 (default bar, not lowered). Source: https://www.livewellatrai.com/ (preflight <code class="code-inline">ok</code>, Imperva marker present; live capture, 2026-11-13). Rebuild (local): <code class="code-inline">aem up</code> on http://localhost:3021/ with the section files in <code class="code-inline">pages/</code> built by <code class="code-inline">build.py</code>.</p>
+<div class="table-scroll"><table class="spec-table"><thead><tr><th>Phase / iteration</th><th>Block / variant</th><th>Change</th><th>Mismatches before→after</th><th>Pixel before→after (1440 / 1280)</th><th>Context Δ</th><th>Spend Δ</th></tr></thead><tbody>
+<tr><td>Intake / capture</td><td>—</td><td>preflight 1/1 <code class="code-inline">ok</code>; 7 sections captured live at both widths</td><td>n/a</td><td>n/a</td><td>—</td><td>not metered</td></tr>
+<tr><td>Baseline</td><td>—</td><td>existing <code class="code-inline">main</code> preview gated against the source: 0/14 pass; enroll split over 2 sections, contacts list expanded (3068px vs 582px)</td><td>see <code class="code-inline">work/gate/home-main</code></td><td>header 65.5 / 64.1, hero 99.1 / 52.1, footer 100 / 100</td><td>—</td><td>—</td></tr>
+<tr><td>Content</td><td>section files</td><td>content taken from the <code class="code-inline">main</code> DA page (text and links verbatim), images re-pointed to the source files (source names, so the gate pairs them); enroll = 1 section (<code class="code-inline">Style: enroll</code>); contacts = <code class="code-inline">Style: navy, contacts</code> with a toggle-label row</td><td>n/a</td><td>n/a</td><td></td><td></td></tr>
+<tr><td>Global</td><td><code class="code-inline">brand.css</code></td><td>font family <code class="code-inline">Aeroport</code> with its original case (stylelint <code class="code-inline">value-keyword-case</code> disabled per line)</td><td>header/footer font-family mismatches → 0</td><td>—</td><td></td><td></td></tr>
+<tr><td>Footer 1</td><td><code class="code-inline">footer</code></td><td>figure/img display, logo inline + 32px margin, year wrapped in <code class="code-inline">.footer-year</code> (dynamic on the source; <code class="code-inline">invisible</code> in site.json, footer re-captured)</td><td>10 → 0</td><td>100 → 98.8 / 98.7 → 98.9</td><td></td><td></td></tr>
+<tr><td>Header 1</td><td><code class="code-inline">header</code></td><td>fixed bar, <code class="code-inline">li &gt; p</code> unwrapped (DA wrap), 17.6px items, CTA arrow drawn as a background instead of an <code class="code-inline">&lt;img&gt;</code>; gate selector <code class="code-inline">body &gt; header</code></td><td>51 → 3</td><td>65.5 → 100 / 64.1 → 100</td><td></td><td></td></tr>
+<tr><td>Header 2</td><td><code class="code-inline">header</code></td><td>brand colour inherits, toggle <code class="code-inline">text-align: start</code>; <code class="code-inline">main</code> padding = nav height + 84px</td><td>3 → 0</td><td>100 / 100</td><td></td><td></td></tr>
+<tr><td>Hero + new hires</td><td><code class="code-inline">hero-split</code></td><td>fixed 608/496px media, 128px padding, no vw scaling; content column flex/align start; image ±1px offset; h2 anchor offset (−112/+112px)</td><td>7/12 → 0</td><td>99.1 → 100 / 52.0 → 100; 99.4 → 100 / 60.6 → 100</td><td></td><td></td></tr>
+<tr><td>RAI benefits 1</td><td><code class="code-inline">hero-cta</code></td><td>photo as CSS background (source has no <code class="code-inline">&lt;img&gt;</code>); text max-width 667.383px</td><td>6 → 0</td><td>99.0 → 45 (wrong bg size)</td><td></td><td></td></tr>
+<tr><td>RAI benefits 2</td><td><code class="code-inline">hero-cta</code></td><td>background <code class="code-inline">cover</code>, centred</td><td>0 → 0</td><td>45 → 100 / 47 → 99.99</td><td></td><td></td></tr>
+<tr><td>Enroll 1</td><td><code class="code-inline">columns-promo</code>, <code class="code-inline">cards-steps</code>, <code class="code-inline">styles.css</code></td><td>blocks rewritten for the source structure: the white OE box (intro + 2-item step list) and the green LSA panel (head, 3 cards, notice); old <code class="code-inline">light-grey</code>/<code class="code-inline">green</code> section styles replaced by <code class="code-inline">enroll</code></td><td>134 → 15</td><td>56.9 → 99.4 / 54.8 → 99.3</td><td></td><td></td></tr>
+<tr><td>Enroll 2</td><td>same</td><td>panel text colour, cards text-align start, step link <code class="code-inline">align-self: end</code></td><td>15 → 0</td><td>99.4 → 100 / 99.3 → 100</td><td></td><td></td></tr>
+<tr><td>Contacts 1</td><td><code class="code-inline">cards</code> (<code class="code-inline">contacts</code>), <code class="code-inline">styles.css</code></td><td>toggle button from the first row&#x27;s label; list + callout collapsed until pressed; wrappers <code class="code-inline">display: contents</code></td><td>127 → 0</td><td>18.7 → 100 / 18.7 → 100</td><td></td><td></td></tr>
+<tr><td>Footer 2–4</td><td><code class="code-inline">footer</code></td><td>1px text raster offset tried with ±0.3/0.6px nudges; no gain, reverted (stop rule)</td><td>0 → 0</td><td>98.79 / 98.9 (unchanged)</td><td></td><td></td></tr>
+<tr><td>Lint</td><td>all</td><td>max-len, destructuring, selector order, duplicate selector</td><td>0 → 0</td><td>unchanged</td><td></td><td></td></tr>
+<tr><td>Publish</td><td>DA</td><td>15 images to DA <code class="code-inline">/media/</code> (201); nav, footer, index uploaded and previewed on <code class="code-inline">livewellatrai-home-parity</code>; served blocks checked in <code class="code-inline">/index.plain.html</code> (all 6 in order)</td><td>n/a</td><td>n/a</td><td></td><td></td></tr>
+<tr><td>Preview gate 1</td><td>—</td><td>offsets: footer +40px (DA serves the metadata section as an empty last div, so the RAI benefits section kept its 40px bottom margin)</td><td>image pairing only</td><td>100 / 100 (footer 98.79 / 98.9)</td><td></td><td></td></tr>
+<tr><td>Fix</td><td><code class="code-inline">styles.css</code>, <code class="code-inline">hero-cta.css</code></td><td><code class="code-inline">main &gt; .section:empty { display: none }</code>; the hero-cta section is also flush when followed by the empty last section</td><td>offsets 12/14 → 14/14</td><td>unchanged</td><td></td><td></td></tr>
+<tr><td>Preview gate 2</td><td>—</td><td>4/14 pass; all 36 remaining mismatches are <code class="code-inline">UNPAIRED</code> image pairings (EDS renames media to <code class="code-inline">media_&lt;hash&gt;</code>); pixels 100% except the footer (98.79 / 98.9)</td><td>36 (pairing only)</td><td>100 / 100</td><td></td><td></td></tr>
+<tr><td><strong>Total since plan</strong></td><td></td><td></td><td></td><td></td><td><strong>+118.8k</strong> (105.9k → 224.7k)</td><td><strong>+$4.39</strong> ($341.91 → $346.30)</td></tr>
+</tbody></table></div>
+<h3>Results (local, http://localhost:3021/)</h3>
+<ul class="hl-list"><li>Gate: <strong>12/14 PASS</strong>. All sections are at 0 computed-style mismatches. The footer fails the pixel bar at both widths: 98.79% (1440) and 98.9% (1280).</li><li>Offsets: 14/14 sections at the source&#x27;s page position.</li><li><code class="code-inline">npm run lint</code>: clean.</li></ul>
+<h3>Results (branch preview, https://livewellatrai-home-parity--livewellatrai--adobedrago.aem.page/)</h3>
+<ul class="hl-list"><li>Gate: 4/14 PASS. Every failure except the footer&#x27;s pixel score is the gate&#x27;s image-name pairing (<code class="code-inline">media_&lt;hash&gt;</code> renames); pixels are 100% for those sections.</li><li>Offsets: 14/14.</li></ul>
+<h3>Residuals / not verified</h3>
+<ul class="hl-list"><li>Footer pixels: the text paragraphs render 1px lower than the source&#x27;s, although their layout boxes match (4181.72 vs 4181.73 page Y at 1280). Within the footer, the shift covers only the text. The result depended on the footer&#x27;s page position (it passed at 1280 when the page was taller). Not fixed; stop rule.</li><li>The contacts list&#x27;s open state is not gated (per intake). It was checked by clicking once at 1440: 19 vendor tiles and the callout appear.</li><li>Only 1440 and 1280 were measured. Mobile/tablet widths, hover states and the &quot;Benefit Guides&quot; dropdown are not verified.</li><li>The source ships no Aeroport webfont, so both sides render the fallback <code class="code-inline">sans-serif</code>.</li><li>The empty &quot;Learn more on Employee Central.&quot; link has an empty <code class="code-inline">href</code> on the source too; it is kept as authored.</li></ul></div></details>
+</section><section class="doc-section" id="decisions">
+<h2><span class="section-icon icon-purple"><svg class="icon" viewBox="0 0 16 16" fill="currentColor"><path d="M2 2.75A.75.75 0 012.75 2h7.5l3.5 3.5v7.75a.75.75 0 01-.75.75h-10.5a.75.75 0 01-.75-.75zM3.5 3.5v9h9V6H9.5V3.5z"/></svg></span>Decisions &amp; assumptions</h2>
+<div class="section-rule"></div>
+<div class="table-scroll"><table class="spec-table"><thead><tr><th>Decision</th><th>Detail</th></tr></thead><tbody><tr><td>Gate widths</td><td>1440 and 1280 px, bar not lowered.</td></tr><tr><td>Open state</td><td>The contacts list&#x27;s open state is not gated; checked once at 1440 (19 vendor tiles and the callout appear).</td></tr></tbody></table></div>
+</section><section class="doc-section" id="limitations">
+<h2><span class="section-icon icon-orange"><svg class="icon" viewBox="0 0 16 16" fill="currentColor"><path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0114.082 15H1.918a1.75 1.75 0 01-1.543-2.575z"/></svg></span>Known limitations</h2>
+<div class="section-rule"></div>
+<div class="table-scroll"><table class="spec-table"><thead><tr><th>Item</th><th>Detail</th></tr></thead><tbody><tr><td>Footer pixels</td><td>Footer text renders 1px lower than the source although layout boxes match. Not fixed (stop rule).</td></tr><tr><td>Fonts</td><td>The source ships no Aeroport webfont, so both sides render the fallback sans-serif.</td></tr><tr><td>Not verified</td><td>Mobile/tablet widths, hover states, the Benefit Guides dropdown.</td></tr><tr><td>Empty link</td><td>&quot;Learn more on Employee Central.&quot; has an empty href on the source too; kept as authored.</td></tr></tbody></table></div>
+</section><section class="doc-section" id="next-steps">
+<h2><span class="section-icon icon-blue"><svg class="icon" viewBox="0 0 16 16" fill="currentColor"><path d="M8.22 2.97a.75.75 0 011.06 0l4.25 4.25a.75.75 0 010 1.06l-4.25 4.25a.75.75 0 01-1.06-1.06l2.97-2.97H3.75a.75.75 0 010-1.5h7.44L8.22 4.03a.75.75 0 010-1.06z"/></svg></span>Next steps</h2>
+<div class="section-rule"></div>
+<ul class="checklist"><li class="check-item"><span class="check-mark cm-todo"></span><div class="check-body"><div class="check-title">Migrate the 3 internal paths linked from /nav and /footer that have no DA document yet.</div></div></li><li class="check-item"><span class="check-mark cm-todo"></span><div class="check-body"><div class="check-title">Investigate the 1px footer text offset if the pixel bar must be met.</div></div></li><li class="check-item"><span class="check-mark cm-todo"></span><div class="check-body"><div class="check-title">Run QA on the branch preview and the main preview against the production site, section by section.</div></div></li><li class="check-item"><span class="check-mark cm-todo"></span><div class="check-body"><div class="check-title">Publish the pages to .aem.live once QA is signed off (merging main ships code only; content is previewed and published separately).</div></div></li></ul>
+</section><section class="doc-section" id="dev-notes">
+<h2><span class="section-icon icon-ink"><svg class="icon" viewBox="0 0 16 16" fill="currentColor"><path d="M4.5 2A2.5 2.5 0 002 4.5v7A2.5 2.5 0 004.5 14h7a2.5 2.5 0 002.5-2.5v-7A2.5 2.5 0 0011.5 2zM3.5 4.5a1 1 0 011-1h7a1 1 0 011 1v7a1 1 0 01-1 1h-7a1 1 0 01-1-1z"/></svg></span>Developer notes</h2>
+<div class="section-rule"></div>
+<h3>Run locally</h3>
+<div class="code-block"><span class="cmt"># clone and install</span>
+git clone https://github.com/AdobeDrago/livewellatrai.git &amp;&amp; cd livewellatrai
+npm i
+<span class="cmt"># local code, previewed DA content</span>
+npx -y @adobe/aem-cli up
+<span class="cmt"># lint before every PR</span>
+npm run lint</div>
+<h3>Where things live</h3>
+<div class="table-scroll"><table class="spec-table"><thead><tr><th>Path</th><th>Purpose</th></tr></thead><tbody><tr><td>blocks/&lt;name&gt;/</td><td>Block JS + CSS (one folder per block)</td></tr><tr><td>scripts/scripts.js</td><td>Page decoration, auto-blocking, section styles</td></tr><tr><td>scripts/aem.js</td><td>Vendored AEM library — never edit</td></tr><tr><td>styles/styles.css</td><td>Global tokens and base styles (:root)</td></tr><tr><td>styles/fonts.css</td><td>Webfont @font-face rules</td></tr><tr><td>head.html</td><td>Head markup, CSP and script/style includes</td></tr><tr><td>import-work/</td><td>Migration sources, DA documents, gate configs and ledger</td></tr></tbody></table></div>
+<h3>Rules from the repo's AGENTS.md</h3>
+<ul class="hl-list"><li>Markup comes from the backend: fetch <code class="code-inline">/path.plain.html</code> before writing a block.</li><li><code class="code-inline">buildAutoBlocks</code> rewrites content before a block runs; authors omit and add cells, so decorate defensively.</li><li>Scope CSS to <code class="code-inline">.blockname</code>; <code class="code-inline">-wrapper</code> and <code class="code-inline">-container</code> are section classes.</li><li>A PR without a <code class="code-inline">{branch}--livewellatrai--AdobeDrago.aem.page/{path}</code> link is rejected.</li><li>Merging main ships code; content is previewed and published separately in DA.</li><li>All committed files are served — use <code class="code-inline">.hlxignore</code> for anything that should not be.</li></ul>
+<h3>Authoring workflow in DA.live</h3>
+<ol class="req-list"><li>Open <a href="https://da.live/#/adobedrago/livewellatrai" target="_blank" rel="noopener">da.live/#/adobedrago/livewellatrai</a> and edit the document.</li><li>Preview from DA (or use the Sidekick) and check <code class="code-inline">https://main--livewellatrai--adobedrago.aem.page/</code>.</li><li>For a code change, branch from main, push, and open the PR with the <code class="code-inline">&lt;branch&gt;--livewellatrai--adobedrago.aem.page</code> link.</li><li>Publish content to .aem.live after QA.</li></ol>
+</section>
+<footer class="doc-footer">
+  <span>Updated November 2026</span><span>·</span>
+  <span>Generated from the GitHub repos and DA.live content of the AdobeDrago organisation by <code class="code-inline">tools/collect.py</code> and <code class="code-inline">tools/build.py</code>.</span>
+</footer>
+</div></main>
+</div>
+<script>
+// Site switcher + scroll-spy for the sidebar. No dependencies.
+(function () {
+  var sel = document.getElementById('site-switch');
+  if (sel) sel.addEventListener('change', function () { if (sel.value) window.location.href = sel.value; });
+  var links = [].slice.call(document.querySelectorAll('.sidebar-link[href^="#"]'));
+  var map = {};
+  links.forEach(function (a) { map[a.getAttribute('href').slice(1)] = a; });
+  var sections = Object.keys(map).map(function (id) { return document.getElementById(id); }).filter(Boolean);
+  if (!('IntersectionObserver' in window) || !sections.length) return;
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) {
+        links.forEach(function (l) { l.classList.remove('active'); });
+        if (map[e.target.id]) map[e.target.id].classList.add('active');
+      }
+    });
+  }, { rootMargin: '-20% 0px -70% 0px' });
+  sections.forEach(function (s) { io.observe(s); });
+})();
+
+</script>
+</body>
+</html>
